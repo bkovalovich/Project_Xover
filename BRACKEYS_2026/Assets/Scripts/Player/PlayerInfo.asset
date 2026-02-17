@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: PlayerInfo
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInfoSO
   health: 5
-  moveSpeed: 0.1
+  moveSpeed: 70
   dashSpeed: 5
+  attackLength: 0.5

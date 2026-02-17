@@ -1,16 +1,15 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+    private int score;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    [SerializeField] GameObject[] scenarioList;
+
+    private GameObject PickNextScenario() {
+        return null;
+    }
+    private void LoadNextGame() {
+        GameObject scenario = PickNextScenario(); 
     }
 }
