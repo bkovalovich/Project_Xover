@@ -149,6 +149,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15ccca916e49c544288b35d458ec07d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  rotationParent: {fileID: 7396663637564300218}
 --- !u!114 &2791784982533796473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,8 +279,9 @@ GameObject:
   - component: {fileID: 4032814912910906076}
   - component: {fileID: 2796061920150093089}
   - component: {fileID: 2021924698255529379}
+  - component: {fileID: 6228146910672501142}
   m_Layer: 0
-  m_Name: Capsule
+  m_Name: PlayerAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -294,8 +296,8 @@ Transform:
   m_GameObject: {fileID: 8239217762093681643}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.2553, z: 0}
-  m_LocalScale: {x: 0.1103204, y: 0.1787, z: 1}
+  m_LocalPosition: {x: 0, y: -0.4439, z: 0}
+  m_LocalScale: {x: 0.487561, y: 0.5204101, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7396663637564300218}
@@ -350,7 +352,7 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -9095717837082945937, guid: 207ee8102dd4143d288186ef0be518ee, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9729441, g: 0, b: 0, a: 0.27058825}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -389,13 +391,25 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0.0000009536743, y: 0}
   m_Size: {x: 1.0000002, y: 2.0000005}
   m_Direction: 0
+--- !u!114 &6228146910672501142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8239217762093681643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16495f28ef5c5f74c9fe55fa26a7e14b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
 --- !u!1 &8509997820111132192
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +420,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7396663637564300218}
   - component: {fileID: 1881876447255720541}
-  - component: {fileID: 3061228008222963737}
   m_Layer: 0
   m_Name: Rotation
   m_TagString: Untagged
@@ -489,15 +502,3 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
   m_SpriteSortPoint: 0
---- !u!114 &3061228008222963737
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8509997820111132192}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c6d64e7a907b64b4383db9784fad6e1c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::PlayerRotation

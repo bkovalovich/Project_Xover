@@ -3,6 +3,6 @@
 [CreateAssetMenu(fileName = "PlayerInfo", menuName = "ScriptableObjects/PlayerInfo")]
 
 public class PlayerInfoSO : ScriptableObject {
-    [SerializeField] public float health, moveSpeed, dashSpeed, attackLength; 
+    [SerializeField] public float health, moveSpeed, dashSpeed, attackLength, dashLength; 
     
 }
