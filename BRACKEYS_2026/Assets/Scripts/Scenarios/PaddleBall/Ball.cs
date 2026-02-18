@@ -2,8 +2,10 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    [SerializeField] float startingSpeed;
+    [SerializeField] float reboundSpeedMultiplier;
+    [SerializeField] float maxSpeed = 10;
     private Rigidbody2D rb;
-    public float startingSpeed;
 
     private void Awake()
     {
@@ -11,15 +13,29 @@ public class Ball : MonoBehaviour
         rb.linearVelocity = new Vector2(Random.Range(0f, 1f) * startingSpeed, Random.Range(-1f, 1f)) * startingSpeed;
     }
 
+    private void FixedUpdate()
+    {
+        if (rb.linearVelocity.magnitude > maxSpeed)
+        {
+            rb.linearVelocity = Vector2.ClampMagnitude(rb.linearVelocity, maxSpeed);
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         switch (collision.gameObject.name)
         {
             case "Boundry Top":
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x * reboundSpeedMultiplier, -rb.linearVelocity.y * reboundSpeedMultiplier);
                 break;
             case "Boundry Bottom": 
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x, -rb.linearVelocity.y);
+                rb.linearVelocity = new Vector2(rb.linearVelocity.x * reboundSpeedMultiplier, -rb.linearVelocity.y * reboundSpeedMultiplier);
+                break;
+            case "Boundry Left":
+                transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(false);
+                break;
+            case "Boundry Right":
+                transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(true);
                 break;
         }
     }
