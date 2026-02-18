@@ -29,7 +29,6 @@ public class PaddleAI : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wait");
             StartCoroutine(Wait(thinkingTime));
         }
     }
