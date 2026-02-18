@@ -3,6 +3,8 @@
 public abstract class Enemy : ScenarioObject {
     protected int health;
 
+    public Event destroyed = new Event(); 
+
     protected abstract void Attack();
     protected abstract void Move();
 
@@ -12,11 +14,12 @@ public abstract class Enemy : ScenarioObject {
         }
     }
     protected virtual void TakeDamage() {
-        Debug.Log("took damage");
         health--;
+        if (health <= 0) OnDead();
     }
     protected virtual void OnDead() {
-        if (isWinCon) winConCompleted.Use(); 
+        destroyed.Trigger();
+        Destroy(this.gameObject);
     }
     protected void Update() {
         Move();

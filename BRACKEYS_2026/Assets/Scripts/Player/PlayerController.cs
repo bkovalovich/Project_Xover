@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] Transform rotationParent;
     private PlayerAttack attackScript; 
-    float angleTolerance = 1f;
     private bool isDashing = false; 
 
     private Vector2 currentMoveInput = Vector2.zero, currentMouseInput = Vector2.zero;
@@ -125,6 +124,8 @@ public class PlayerController : MonoBehaviour
         FinishDash(); 
     }
     IEnumerator Attack(float duration) {
+        attackScript.Attack(false);
+        yield return null;
         attackScript.Attack(true);
         yield return new WaitForSeconds(duration);
         attackScript.Attack(false);
