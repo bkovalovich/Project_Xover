@@ -580,7 +580,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bcbee086b7d19e4b887f195af2d87e9, type: 3}
---- !u!1001 &8500319933710746202
+--- !u!1001 &2274547684796675875
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -588,55 +588,71 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2087671075551163, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
-      propertyPath: m_Name
-      value: ProtectObjective_Scenario
+    - target: {fileID: 1797688129997644302, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
+      propertyPath: enemyGoalPrefab
+      value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 1797688129997644302, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
+      propertyPath: backgroundSprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1797688129997644302, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
+      propertyPath: playerGoalPrefab
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3342783942527661437, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: -0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7384864957798360816, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+    - target: {fileID: 6461458785486949154, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8983128686008067835, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
+      propertyPath: m_Name
+      value: ScoreAPoint_Scenario
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 8bae1cc4ad4f1ec499f70db898937eed, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: 0381628eb5d00de48aa835c225404c59, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -644,6 +660,6 @@ SceneRoots:
   - {fileID: 817565700}
   - {fileID: 862664812}
   - {fileID: 1202114975}
+  - {fileID: 2274547684796675875}
   - {fileID: 1590525048}
-  - {fileID: 8500319933710746202}
   - {fileID: 1020908908}
