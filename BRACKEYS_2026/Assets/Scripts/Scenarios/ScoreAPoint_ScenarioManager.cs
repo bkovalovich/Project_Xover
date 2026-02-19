@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using UnityEngine;
 
 public class ScoreAPoint_ScenarioManager : ScenarioManager
@@ -8,6 +8,7 @@ public class ScoreAPoint_ScenarioManager : ScenarioManager
     [SerializeField] GameObject playerGoalPrefab;
     public override void SetupGame()
     {
+        base.SetupGame();
         GameManager.instance.player.transform.position = transform.position;
     }
 

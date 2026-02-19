@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 
 public class ProtectObjestive_ScenarioManager : ScenarioManager
@@ -10,6 +10,7 @@ public class ProtectObjestive_ScenarioManager : ScenarioManager
 
     public override void SetupGame()
     {
+        base.SetupGame();
         for (int i = 0; i < numberOfEnemies; i++)
         {
             GameObject g = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);

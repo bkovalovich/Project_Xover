@@ -4,8 +4,8 @@ public class DefeatCertainEnemy_ScenarioManager : ScenarioManager {
     [SerializeField] GameObject bossEnemy, smallerEnemy;
 
     public override void SetupGame() {
+        base.SetupGame();
         GameObject g = Instantiate(bossEnemy, GetRandomSpawnPoint(), Quaternion.identity);
-
         g.GetComponent<Enemy>().destroyed.Subscribe(OnWinCon);
 
     }

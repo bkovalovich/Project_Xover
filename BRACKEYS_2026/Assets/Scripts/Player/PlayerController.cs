@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Windows;
@@ -15,14 +16,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb; 
     private PlayerInputActions playerActions;
-    private InputAction move, dash, attack, look;
+    private InputAction move, dash, attack, look, warp;
     private Coroutine decreasingCoroutine, dashCoroutine, attackCoroutine; 
 
     [SerializeField] Transform rotationParent;
-    private PlayerAttack attackScript; 
-    private bool isDashing = false; 
+    private PlayerAttack attackScript;
+    private bool isDashing = false, isWarping = false; 
 
-    private Vector2 currentMoveInput = Vector2.zero, currentMouseInput = Vector2.zero;
+    private Vector2 currentMoveInput = Vector2.zero, currentMouseInput, currentMouseWorldInput = Vector2.zero;
     //INITS
     private void Awake() {
         playerActions = new PlayerInputActions();
@@ -30,7 +31,8 @@ public class PlayerController : MonoBehaviour
         attackScript = rotationParent?.GetComponentInChildren<PlayerAttack>();
         attackScript.Attack(false);
 
-}
+
+    }
     private void OnEnable() {
         playerActions.Enable();
 
@@ -51,8 +53,12 @@ public class PlayerController : MonoBehaviour
         dash.Enable();
         dash.performed += OnDash;
         dash.canceled += OnDashCancel;
-    }
 
+        warp = playerActions.Player.Warp;
+        warp.Enable();
+        warp.performed += OnWarp; 
+        warp.canceled += FinishWarp; 
+    }
 
     private void OnDisable() {
         move.performed -= OnMove;
@@ -61,12 +67,14 @@ public class PlayerController : MonoBehaviour
         look.performed -= OnLook;
         dash.performed -= OnDash;
         dash.canceled -= OnDashCancel;
+        warp.performed -= OnWarp;
+        warp.canceled -= FinishWarp;
 
         playerActions.Disable();
     }
     //UPDATES
     private void FixedUpdate() {
-        if(!isDashing) Move();
+        if(!isDashing && !isWarping) Move();
     }
     private void Update() {
         RotateToMouse();
@@ -75,13 +83,13 @@ public class PlayerController : MonoBehaviour
     private void OnMove(InputAction.CallbackContext context) {
         currentMoveInput = context.ReadValue<Vector2>();
 
-        if (isDashing) return; 
+        if (isDashing || isWarping) return; 
         if(decreasingCoroutine != null) StopCoroutine(decreasingCoroutine);
         currentSpeed = MoveSpeed;
     }
     private void OnCancelMove(InputAction.CallbackContext context) {
         currentMoveInput = Vector2.zero;
-        if (isDashing) return;
+        if (isDashing || isWarping) return;
         if (decreasingCoroutine != null) StopCoroutine(decreasingCoroutine);
         decreasingCoroutine = StartCoroutine(DecreaseSpeed());
     }    
@@ -90,7 +98,8 @@ public class PlayerController : MonoBehaviour
         attackCoroutine = StartCoroutine(Attack(playerInfo.attackLength));
     }
     private void OnLook(InputAction.CallbackContext context) {
-        currentMouseInput = context.ReadValue<Vector2>(); 
+        currentMouseInput = context.ReadValue<Vector2>();
+        currentMouseWorldInput = GameManager.instance.currentCamera.ScreenToWorldPoint(context.ReadValue<Vector2>()); 
     }
     private void OnDash(InputAction.CallbackContext context) {
         isDashing = true;
@@ -99,6 +108,25 @@ public class PlayerController : MonoBehaviour
     }
     private void OnDashCancel(InputAction.CallbackContext context) {
         FinishDash();
+    }    
+    private void OnWarp(InputAction.CallbackContext context) {
+        isWarping = true;
+        rb.linearVelocity = Vector2.zero;
+        StartCoroutine(Warping());
+    }
+    private void FinishWarp(InputAction.CallbackContext context) {
+        isWarping = false; 
+    }
+    IEnumerator Warping() {
+        List<GameObject> otherScenarios = GameManager.instance.CurrentScenario.otherScenarios;
+        GameObject closestScenario = null;
+        while (isWarping) {
+            closestScenario = VectorUtilities.GetClosestGameObject(currentMouseWorldInput, otherScenarios);
+            yield return null; 
+        }
+        GameManager.instance.CurrentScenario = closestScenario.GetComponentInChildren<ScenarioManager>();
+        rb.position = closestScenario.transform.position;
+        //rb.position = GameManager.instance.currentCamera.ScreenToWorldPoint(currentMouseInput);
     }
     //MOVEMENT LOGIC
     IEnumerator DecreaseSpeed() {
@@ -139,10 +167,7 @@ public class PlayerController : MonoBehaviour
         rb.linearVelocity = currentMoveInput.normalized * new Vector2(currentSpeed, currentSpeed) * Time.deltaTime;
     }
     private void RotateToMouse() {
-        Vector3 mouseWorldPos = Camera.main.ScreenToWorldPoint(currentMouseInput);
-        mouseWorldPos.z = 0f;
-
-        Vector3 direction = mouseWorldPos - rotationParent.position;
+        Vector3 direction = (currentMouseWorldInput - (Vector2)rotationParent.position).normalized;
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
         rotationParent.rotation = Quaternion.Euler(0f, 0f, angle + 90);

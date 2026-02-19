@@ -7,12 +7,12 @@ public class DefeatAllEnemies_ScenarioManager : ScenarioManager {
     private int destroyedEnemies;
 
     public override void SetupGame() {
+        base.SetupGame(); 
         for(int i = 0; i < numberOfEnemies; i++) {
             GameObject g = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
             Enemy e = g.GetComponent<Enemy>();
             e.destroyed.Subscribe(OnEnemyDestroyed);
         }
-        GameManager.instance.player.transform.position = transform.position;
     }
     protected void OnEnemyDestroyed() {
         destroyedEnemies++;

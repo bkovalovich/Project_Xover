@@ -1,19 +1,28 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public abstract class ScenarioManager : MonoBehaviour
 {
+    public Camera scenarioCamera; 
     [SerializeField] SpriteRenderer backgroundSprite; 
     //protected int ID;
     
     public Event WinConCompleted = new Event();
     protected bool currentGame;
+    public List<GameObject> otherScenarios; 
 
-    public abstract void SetupGame();
+    private void Awake() {
+        GetOtherScenarios(); 
+    }
 
-    protected virtual void PlayerEnterGame() {
+    public virtual void SetupGame() {
+        scenarioCamera = transform.parent.GetComponentInChildren<Camera>(); 
+    }
+
+    public virtual void PlayerEnterGame() {
         currentGame = true;
     }
-    protected virtual void PlayerLeaveGame() {
+    public virtual void PlayerLeaveGame() {
         currentGame = false; 
     }
     protected abstract void OnWinCon();
@@ -26,6 +35,15 @@ public abstract class ScenarioManager : MonoBehaviour
         float maxY = bounds.max.y;
 
         return new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
-
+    }
+    protected void GetOtherScenarios() {
+        List<GameObject> scenarios = new List<GameObject>(GameObject.FindGameObjectsWithTag("ScenarioAnchor"));
+        foreach (GameObject scenario in scenarios) {
+            if (scenario == this.gameObject) {
+                scenarios.Remove(scenario);
+            }
+        }
+        Debug.Log(scenarios);
+        otherScenarios = scenarios; 
     }
 }
