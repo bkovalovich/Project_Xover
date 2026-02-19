@@ -1,6 +1,7 @@
+using System;
 using UnityEngine;
 
-public class Ball : MonoBehaviour
+public class Ball : ScenarioObject
 {
     [SerializeField] float startingSpeed;
     [SerializeField] float reboundSpeedMultiplier;
@@ -10,7 +11,7 @@ public class Ball : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        rb.linearVelocity = new Vector2(Random.Range(0f, 1f) * startingSpeed, Random.Range(-1f, 1f)) * startingSpeed;
+        rb.linearVelocity = new Vector2(UnityEngine.Random.Range(0f, 1f) * startingSpeed, UnityEngine.Random.Range(-1f, 1f)) * startingSpeed;
     }
 
     private void FixedUpdate()

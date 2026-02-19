@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class ScoreAPoint_ScenarioManager : ScenarioManager
 {
-    [SerializeField] GameObject ballPrefab;
+    [SerializeField] GameObject pointScoringPrefab;
     [SerializeField] GameObject enemyGoalPrefab;
     [SerializeField] GameObject playerGoalPrefab;
     public override void SetupGame()
@@ -11,18 +11,7 @@ public class ScoreAPoint_ScenarioManager : ScenarioManager
         GameManager.instance.player.transform.position = transform.position;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ball"))
-        {
-            if (collision.gameObject.CompareTag("PlayerGoal"))
-            {
-                OnWinCon();
-            }
-        }
-    }
-
-    public void CollisionDetected(Boolean winCon)
+    public void CollisionDetected(bool winCon)
     {
         if (winCon)
         {
