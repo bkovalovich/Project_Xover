@@ -15,14 +15,18 @@ public class GameManager : MonoBehaviour {
             currentCamera = value.scenarioCamera; 
         }
     }
-    private int score;
+    private int score, health;
 
     [SerializeField] GameObject[] scenarioList;
     [SerializeField] GameObject[] spawnPoints;
-    private Dictionary<string, GameObject> spawnContainers;
+    [SerializeField] MainCanvas mainCanvas; 
 
     private void Awake() {
        instance = this;
+        score = 0;
+        mainCanvas.Score = score;
+        health = player.GetComponent<Player>().playerInfo.health;
+        mainCanvas.Health = health; 
         for (int i = 0; i < spawnPoints.Length; i++) {
             GameObject scenario = Instantiate(PickNextScenario(), spawnPoints[i].transform);
             scenario.GetComponent<ScenarioManager>().SetupGame();
@@ -30,10 +34,13 @@ public class GameManager : MonoBehaviour {
         }
         
     }
+    public void PlayerTakeDamage() {
+        health--;
+        mainCanvas.Health = health; 
+    }
     private void SpawnPlayerInScenario(GameObject scenario) {
         player.transform.position = scenario.transform.position;
         ScenarioManager scenarioScript = scenario.GetComponent<ScenarioManager>();
-        // scenarioScript.SetupGame();
         scenarioScript.PlayerEnterGame();
         CurrentScenario = scenarioScript;         
     }
@@ -47,6 +54,7 @@ public class GameManager : MonoBehaviour {
         completed.FinishScenario(); 
 
         GameObject newScenario = Instantiate(PickNextScenario(), container); //spawn new scenario
+        newScenario.GetComponent<ScenarioManager>().SetupGame(); 
         SpawnPlayerInScenario(newScenario);
     }
 

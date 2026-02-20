@@ -96,6 +96,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 7 && stateMachine.IsInState(knockbackState) == false) {
             pointOfLastCollision = collision.gameObject.transform.position;
             stateMachine.ChangeState(knockbackState);
+            GameManager.instance.PlayerTakeDamage(); 
         }
     }
     //CALLBACKS
