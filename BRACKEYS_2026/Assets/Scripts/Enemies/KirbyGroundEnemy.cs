@@ -12,6 +12,8 @@ public class KirbyGroundEnemy : Enemy
     [SerializeField] private float wanderTimer = 4f;
     private bool Wander = true;
 
+    [SerializeField] private SpriteRenderer sprite;
+
     protected override void Attack()
     {
     }
@@ -43,9 +45,16 @@ public class KirbyGroundEnemy : Enemy
             wanderTimer = 2f;
             int temp = Random.Range(0, 2);
             if (temp == 0)
+            {
                 direction = -1;
+                sprite.flipX = true;
+            }
+
             else
+            {
                 direction = 1;
+                sprite.flipX = false;
+            }
         }
     }
 

@@ -28,6 +28,6 @@ public class Enemies_ScenarioManager : ScenarioManager
         return e;
     }
     private Transform RandomSpawnPoints() {
-        return spawnPoints[Random.Range(0, spawnPoints.Length)];
+        return spawnPoints[Random.Range(0, spawnPoints.Length - 1)];
     }
 }
