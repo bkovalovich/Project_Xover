@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6898331991047945329}
   - component: {fileID: 332729609708009981}
   - component: {fileID: 3584657908775789202}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: EnemyTemp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -106,6 +106,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24414cbda02bf2741b832a23c66fd14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Temp
+  direction: 0
+  scenarioManager: {fileID: 0}
 --- !u!58 &332729609708009981
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -141,7 +143,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.5
+  m_Radius: 0.69
 --- !u!50 &3584657908775789202
 Rigidbody2D:
   serializedVersion: 5

@@ -1,22 +1,31 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class ScenarioManager : MonoBehaviour
 {
     public Camera scenarioCamera; 
-    [SerializeField] SpriteRenderer backgroundSprite; 
+    [SerializeField] SpriteRenderer backgroundSprite;
+    [SerializeField] string objective;
+    [SerializeField] Color textColor; 
+
+    protected TMP_Text objectiveText; 
     //protected int ID;
     
     public Event WinConCompleted = new Event();
     protected bool currentGame;
-    public List<GameObject> otherScenarios; 
+    [HideInInspector] public List<GameObject> otherScenarios; 
 
     private void Awake() {
         GetOtherScenarios(); 
     }
 
     public virtual void SetupGame() {
-        scenarioCamera = transform.parent.GetComponentInChildren<Camera>(); 
+        Debug.Log("fork off");
+        scenarioCamera = transform.parent.GetComponentInChildren<Camera>();
+        objectiveText = gameObject.transform.parent.GetComponentInChildren<TMP_Text>();
+        //objectiveText.text = objective;
+        objectiveText.color = textColor; 
     }
 
     public virtual void PlayerEnterGame() {
@@ -25,8 +34,14 @@ public abstract class ScenarioManager : MonoBehaviour
     public virtual void PlayerLeaveGame() {
         currentGame = false; 
     }
-    protected abstract void OnWinCon();
-
+    protected virtual void OnWinCon() {
+        objectiveText.text = "Objective Complete!";
+        GameManager.instance.LoadNextScenario(true);
+    }
+    protected virtual void OnLoseCon() {
+        objectiveText.text = "Objective Failed!";
+        GameManager.instance.LoadNextScenario(false);
+    }
     protected Vector2 GetRandomSpawnPoint() {
         Bounds bounds = backgroundSprite.bounds;
         float minX = bounds.min.x;
@@ -43,7 +58,10 @@ public abstract class ScenarioManager : MonoBehaviour
                 scenarios.Remove(scenario);
             }
         }
-        Debug.Log(scenarios);
         otherScenarios = scenarios; 
     }
+    public void FinishScenario() {
+        Destroy(this.gameObject);
+    }
+
 }

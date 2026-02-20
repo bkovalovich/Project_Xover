@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class GameManager : MonoBehaviour {
     public static GameManager instance { get; private set; }
     private ScenarioManager currentScenario;
+
     [HideInInspector] public Camera currentCamera; 
     [SerializeField] public GameObject player; 
 
@@ -17,7 +18,8 @@ public class GameManager : MonoBehaviour {
     private int score;
 
     [SerializeField] GameObject[] scenarioList;
-    [SerializeField] GameObject[] spawnPoints; 
+    [SerializeField] GameObject[] spawnPoints;
+    private Dictionary<string, GameObject> spawnContainers;
 
     private void Awake() {
        instance = this;
@@ -31,14 +33,22 @@ public class GameManager : MonoBehaviour {
     private void SpawnPlayerInScenario(GameObject scenario) {
         player.transform.position = scenario.transform.position;
         ScenarioManager scenarioScript = scenario.GetComponent<ScenarioManager>();
+        scenarioScript.SetupGame();
         scenarioScript.PlayerEnterGame();
         CurrentScenario = scenarioScript;         
     }
     private GameObject PickNextScenario() {
         return scenarioList[Random.Range(0, scenarioList.Length - 1)];
     }
-    public void LoadNextGame() {
-        GameObject scenario = PickNextScenario(); 
+    public void LoadNextScenario(bool successful) {
+        Debug.Log("next scenario loaded");
+        ScenarioManager completed = currentScenario; //finish previous scenario
+        Transform container = completed.transform.parent; 
+        completed.FinishScenario(); 
+
+        GameObject newScenario = Instantiate(PickNextScenario(), container); //spawn new scenario
+        SpawnPlayerInScenario(newScenario);
     }
+
 
 }

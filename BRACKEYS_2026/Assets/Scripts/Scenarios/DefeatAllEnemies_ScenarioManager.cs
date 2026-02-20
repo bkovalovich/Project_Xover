@@ -1,27 +1,31 @@
 ﻿using System;
 using UnityEngine;
 
-public class DefeatAllEnemies_ScenarioManager : ScenarioManager {
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int numberOfEnemies;
+public class DefeatAllEnemies_ScenarioManager : Enemies_ScenarioManager {
+
     private int destroyedEnemies;
 
     public override void SetupGame() {
-        base.SetupGame(); 
-        for(int i = 0; i < numberOfEnemies; i++) {
-            GameObject g = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
-            Enemy e = g.GetComponent<Enemy>();
-            e.destroyed.Subscribe(OnEnemyDestroyed);
-        }
+        base.SetupGame();
+        destroyedEnemies = 0;
+        UpdateObjText(); 
     }
+
     protected void OnEnemyDestroyed() {
+        Debug.Log("enemy destroyed"); 
         destroyedEnemies++;
-        if (destroyedEnemies >= numberOfEnemies) { 
+        if (destroyedEnemies >= numberOfEnemies) {
             OnWinCon(); 
         }
+        UpdateObjText(); 
     }
-    protected override void OnWinCon() {
-        Debug.Log("YOU CAN DEW EET");
+    public override Enemy SpawnEnemy() {
+        Enemy e = base.SpawnEnemy();
+        e.destroyed.Subscribe(OnEnemyDestroyed);
+        return e; 
+    }
+    private void UpdateObjText() {
+       objectiveText.text = $"Defeat {destroyedEnemies}/{numberOfEnemies} enemies";
     }
 
 }

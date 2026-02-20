@@ -6,7 +6,4 @@ public abstract class ScenarioObject : MonoBehaviour {
     public virtual void Setup(bool isWinCon) {
         this.isWinCon = isWinCon;
     }
-    protected void OnWinConComplete() {
-        GameManager.instance.LoadNextGame(); 
-    }
 }

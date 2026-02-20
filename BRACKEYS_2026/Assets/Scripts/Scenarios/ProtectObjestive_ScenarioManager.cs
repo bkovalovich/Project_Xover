@@ -1,36 +1,17 @@
 ﻿using System.Collections;
 using UnityEngine;
 
-public class ProtectObjestive_ScenarioManager : ScenarioManager
+public class ProtectObjestive_ScenarioManager : Enemies_ScenarioManager
 {
-    [SerializeField] GameObject enemyPrefab;
-    [SerializeField] int numberOfEnemies;
+
     [SerializeField] GameObject defensiveObjectPrefab;
     [SerializeField] float defendTime;
 
-    public override void SetupGame()
-    {
+    public override void SetupGame()  {
         base.SetupGame();
-        for (int i = 0; i < numberOfEnemies; i++)
-        {
-            GameObject g = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
-            Enemy e = g.GetComponent<Enemy>();
-            e.destroyed.Subscribe(OnEnemyDestroyed);
-        }
-        GameManager.instance.player.transform.position = transform.position;
     }
 
-    //DELETE AFTER GAMEMANAGER IS FUNCTIONAL VV
-    public void Awake()
-    {
-        for (int i = 0; i < numberOfEnemies; i++)
-        {
-            GameObject g = Instantiate(enemyPrefab, GetRandomSpawnPoint(), Quaternion.identity);
-            Enemy e = g.GetComponent<Enemy>();
-            e.destroyed.Subscribe(OnEnemyDestroyed);
-        }
-    }
-    //DELETE AFTER GAMEMANAGER IS FUNCTIONAL ^^
+
 
     public float GetDefendTime()
     {
@@ -50,8 +31,8 @@ public class ProtectObjestive_ScenarioManager : ScenarioManager
         throw new System.NotImplementedException();
     }
 
-    protected override void OnWinCon()
-    {
+    protected override void OnWinCon() {
+        base.OnWinCon(); 
         Debug.Log("Countdown Finished");
     }
 }

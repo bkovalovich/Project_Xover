@@ -52,6 +52,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7925215065063180663, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Color.b
+      value: 0.7435031
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925215065063180663, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Color.g
+      value: 0.7435031
+      objectReference: {fileID: 0}
+    - target: {fileID: 7925215065063180663, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -82,6 +94,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55183c4967d7e344dac9d26ed77fef7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::DefeatCertainEnemy_ScenarioManager
+  scenarioCamera: {fileID: 0}
   backgroundSprite: {fileID: 1962121583781460508}
+  objective: Defeat Boss
+  otherScenarios: []
   bossEnemy: {fileID: 4547643906972263286, guid: 65b62078df06601449446696a2b6b551, type: 3}
   smallerEnemy: {fileID: 0}

@@ -1,6 +1,10 @@
 ﻿using UnityEngine;
 
 public abstract class Enemy : ScenarioObject {
+    [HideInInspector] public int direction;
+
+    protected Rigidbody2D rb; 
+    [HideInInspector] public Enemies_ScenarioManager scenarioManager; 
     protected int health;
 
     public Event destroyed = new Event(); 
@@ -8,15 +12,25 @@ public abstract class Enemy : ScenarioObject {
     protected abstract void Attack();
     protected abstract void Move();
 
+    protected void Awake() {
+        rb = GetComponent<Rigidbody2D>(); 
+    }
+
     protected void OnTriggerEnter2D(Collider2D collision) {
-        if(collision.gameObject.name == "PlayerAttack") {
+        if (collision.gameObject.name == "PlayerAttack") {
             TakeDamage(); 
         }
+        if(collision.gameObject.tag == "DeathPlane") {
+            scenarioManager.SpawnEnemy();
+            Destroy(this.gameObject);
+        }
+
     }
     protected virtual void TakeDamage() {
         health--;
         if (health <= 0) OnDead();
     }
+
     protected virtual void OnDead() {
         destroyed.Trigger();
         Destroy(this.gameObject);
