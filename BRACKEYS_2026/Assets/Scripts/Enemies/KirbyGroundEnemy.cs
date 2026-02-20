@@ -13,7 +13,9 @@ public class KirbyGroundEnemy : Enemy
     private bool Wander = true;
 
     [SerializeField] private SpriteRenderer sprite;
-
+    [SerializeField] private Sprite walkSprite;
+    [SerializeField] private Sprite jumpSprite;
+ 
     protected override void Attack()
     {
     }
@@ -24,11 +26,16 @@ public class KirbyGroundEnemy : Enemy
         GroundCheck();
         if (isGrounded)
         {
+            sprite.sprite = walkSprite;
             WanderTimerCheck();
             if (Wander)
                 rb.linearVelocity = new Vector2(direction * speed, 0);
             else
                 rb.linearVelocity = new Vector2(0, 0);
+        }
+        else
+        {
+            sprite.sprite = jumpSprite;
         }
 
         // move across screen
