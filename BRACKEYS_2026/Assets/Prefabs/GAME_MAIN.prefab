@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 310523364914679111}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.02, y: 0, z: -5}
+  m_LocalPosition: {x: 0, y: 0, z: -5}
   m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2196,7 +2196,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2292087094228386177, guid: d00d34a85937c8444854e5e2a1f057cc, type: 3}
       propertyPath: scenarioList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2292087094228386177, guid: d00d34a85937c8444854e5e2a1f057cc, type: 3}
       propertyPath: 'spawnPoints.Array.data[0]'
@@ -2221,7 +2221,7 @@ PrefabInstance:
     - target: {fileID: 2292087094228386177, guid: d00d34a85937c8444854e5e2a1f057cc, type: 3}
       propertyPath: 'scenarioList.Array.data[1]'
       value: 
-      objectReference: {fileID: 4811853427688437986, guid: 6a0259e71917ac143813070843d0cb95, type: 3}
+      objectReference: {fileID: 6732431916265524543, guid: 4a4371a193207c04caff367cd78c8ef2, type: 3}
     - target: {fileID: 2673208202275204050, guid: d00d34a85937c8444854e5e2a1f057cc, type: 3}
       propertyPath: m_Name
       value: GameManager
