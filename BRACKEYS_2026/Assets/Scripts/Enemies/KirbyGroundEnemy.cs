@@ -3,8 +3,7 @@ using UnityEngine;
 public class KirbyGroundEnemy : Enemy
 {
     [SerializeField] float speed;
-    [SerializeField] float jumpForce;
-    [SerializeField] float gravity;
+    //[SerializeField] float jumpForce;
     [SerializeField] Transform groundCheckPoint;
     private bool isGrounded = true;
 
@@ -20,12 +19,8 @@ public class KirbyGroundEnemy : Enemy
         GroundCheck();
         if (isGrounded)
         {
-            rb.gravityScale = 0;
+
             rb.linearVelocity = new Vector2(direction * speed, 0);
-        }
-        else
-        {
-            rb.gravityScale = gravity;
         }
 
         // move across screen
@@ -49,25 +44,33 @@ public class KirbyGroundEnemy : Enemy
 
     public void OnChildTriggerEnter2D(Collider2D other, TriggerReporter reporter)
     {
+        if (isJumping) return; // prevent multiple jumps while already in the air
+
+        float colliderTopY = other.bounds.max.y;
+        float jumpHeight = (colliderTopY - transform.position.y) + 0.1f; // add a small buffer to ensure the jump is high enough
+        float grav = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
+        float jumpVelocity = Mathf.Sqrt(2 * grav * jumpHeight);
+
+
         if (reporter.name == "JumpCollider_Left")
         {
-            Jump();
+            Jump(jumpVelocity);
         }
 
         if (reporter.name == "JumpCollider_Right")
         {
-            Jump();
+            Jump(jumpVelocity);
         }
 
     }
 
-    public void Jump()
+    public void Jump(float jumpVelocity)
     {
         Debug.Log("trying to jump");
         if (isGrounded)
         {
             isJumping = true;
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, jumpVelocity), ForceMode2D.Impulse);
 
         }
     }
