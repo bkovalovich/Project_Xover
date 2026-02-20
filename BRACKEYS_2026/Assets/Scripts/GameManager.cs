@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour {
     private void SpawnPlayerInScenario(GameObject scenario) {
         player.transform.position = scenario.transform.position;
         ScenarioManager scenarioScript = scenario.GetComponent<ScenarioManager>();
-        scenarioScript.SetupGame();
+        // scenarioScript.SetupGame();
         scenarioScript.PlayerEnterGame();
         CurrentScenario = scenarioScript;         
     }
