@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour {
         CurrentScenario = scenarioScript;         
     }
     private GameObject PickNextScenario() {
-        return scenarioList[Random.Range(0, scenarioList.Length - 1)];
+        return scenarioList[Random.Range(0, scenarioList.Length)];
     }
     public void LoadNextScenario(bool successful) {
         Debug.Log("next scenario loaded");
