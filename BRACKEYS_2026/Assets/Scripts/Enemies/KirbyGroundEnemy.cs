@@ -9,6 +9,9 @@ public class KirbyGroundEnemy : Enemy
 
     private bool isJumping = false;
 
+    [SerializeField] private float wanderTimer = 4f;
+    private bool Wander = true;
+
     protected override void Attack()
     {
     }
@@ -19,14 +22,33 @@ public class KirbyGroundEnemy : Enemy
         GroundCheck();
         if (isGrounded)
         {
-
-            rb.linearVelocity = new Vector2(direction * speed, 0);
+            WanderTimerCheck();
+            if (Wander)
+                rb.linearVelocity = new Vector2(direction * speed, 0);
+            else
+                rb.linearVelocity = new Vector2(0, 0);
         }
 
         // move across screen
 
         // leap when trigger collider activates
     }
+
+    public void WanderTimerCheck()
+    {
+        wanderTimer -= Time.deltaTime;
+        if (wanderTimer <= 0)
+        {
+            Wander = !Wander;
+            wanderTimer = 2f;
+            int temp = Random.Range(0, 2);
+            if (temp == 0)
+                direction = -1;
+            else
+                direction = 1;
+        }
+    }
+
     public void GroundCheck()
     {
         // check if grounded and set isGrounded accordingly
@@ -51,6 +73,12 @@ public class KirbyGroundEnemy : Enemy
         float grav = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
         float jumpVelocity = Mathf.Sqrt(2 * grav * jumpHeight);
 
+        float playerX = other.gameObject.transform.position.x;
+        if (playerX > transform.position.x)
+            direction = 1;
+        else
+            direction = -1;
+
 
         if (reporter.name == "JumpCollider_Left")
         {
@@ -69,8 +97,10 @@ public class KirbyGroundEnemy : Enemy
         Debug.Log("trying to jump");
         if (isGrounded)
         {
+
             isJumping = true;
-            rb.AddForce(new Vector2(0, jumpVelocity), ForceMode2D.Impulse);
+            rb.linearVelocity = new Vector2(0, 0);
+            rb.AddForce(new Vector2(direction * speed, jumpVelocity), ForceMode2D.Impulse);
 
         }
     }
