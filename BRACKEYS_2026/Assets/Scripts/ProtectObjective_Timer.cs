@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    private Image fill;
+    [SerializeField] Image fill;
     ScenarioManager parent;
     private float maxTime;
     private float current;
@@ -17,9 +17,6 @@ public class Timer : MonoBehaviour
     //    maxTime = parent.GetDefendTime();
     //    time = maxTime;
     //}
-    private void Awake() {
-        fill = GetComponent<Image>(); 
-    }
     public void Toggle(bool val) {
         fill.enabled = val; 
     }

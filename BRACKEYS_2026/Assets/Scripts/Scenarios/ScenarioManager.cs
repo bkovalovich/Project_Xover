@@ -38,7 +38,9 @@ public abstract class ScenarioManager : MonoBehaviour
         else
             timer?.Toggle(false); 
     }
-    public virtual void OnTimerFinish() { }
+    public virtual void OnTimerFinish() {
+        OnLoseCon(); 
+    }
 
     public virtual void PlayerEnterGame() {
         currentGame = true;
@@ -48,12 +50,12 @@ public abstract class ScenarioManager : MonoBehaviour
     }
     protected virtual void OnWinCon() {
         objectiveText.text = "Objective Complete!";
-
-        GameManager.instance.LoadNextScenario(true);
+        objectiveText.transform.DOPunchScale(new Vector3(1.2f, 1.2f, 1), 1); 
+        StartCoroutine(GameManager.instance.LoadNextScenario(true));
     }
     protected virtual void OnLoseCon() {
         objectiveText.text = "Objective Failed!";
-        GameManager.instance.LoadNextScenario(false);
+        StartCoroutine(GameManager.instance.LoadNextScenario(false));
     }
     protected Vector2 GetRandomSpawnPoint() {
         Bounds bounds = backgroundSprite.bounds;

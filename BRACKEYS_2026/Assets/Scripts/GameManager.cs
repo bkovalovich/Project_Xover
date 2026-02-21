@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Collections;
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance { get; private set; }
@@ -47,19 +48,16 @@ public class GameManager : MonoBehaviour {
     private GameObject PickNextScenario() {
         return scenarioList[Random.Range(0, scenarioList.Length)];
     }
-    //IEnumerator LoadNextScenario(bool successful) {
+    public IEnumerator LoadNextScenario(bool successful) {
+        yield return new WaitForSeconds(1f);
 
-    //}
-    public void LoadNextScenario(bool successful) {
-        Debug.Log("next scenario loaded");
         ScenarioManager completed = currentScenario; //finish previous scenario
         Transform container = completed.transform.parent; 
-        completed.FinishScenario(); 
+        completed.FinishScenario();
 
         GameObject newScenario = Instantiate(PickNextScenario(), container); //spawn new scenario
         newScenario.GetComponent<ScenarioManager>().SetupGame(); 
         SpawnPlayerInScenario(newScenario);
     }
-
 
 }

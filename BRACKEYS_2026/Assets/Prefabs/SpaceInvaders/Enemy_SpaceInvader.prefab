@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 6.1356034, y: 5.58982, z: 0.3838}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,8 +84,8 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 21300000, guid: 7a0568d5e3330b84687e307992be3030, type: 3}
-  m_Color: {r: 1, g: 0.4580091, b: 0, a: 1}
+  m_Sprite: {fileID: -2140452173, guid: e91573ab69899d240b69e0e5f028c816, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -129,7 +129,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.06
+  m_Radius: 0.73
 --- !u!50 &3584657908775789202
 Rigidbody2D:
   serializedVersion: 5
@@ -171,4 +171,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ScrollingEnemy
   direction: 0
   scenarioManager: {fileID: 0}
+  health: 0
   speed: 5

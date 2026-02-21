@@ -12,12 +12,11 @@ public class DefeatAllEnemies_ScenarioManager : Enemies_ScenarioManager {
     }
 
     protected void OnEnemyDestroyed() {
-        Debug.Log("enemy destroyed"); 
         destroyedEnemies++;
         if (destroyedEnemies >= numberOfEnemies) {
             OnWinCon(); 
-        }
-        UpdateObjText(); 
+        }else
+            UpdateObjText(); 
     }
     public override Enemy SpawnEnemy() {
         Enemy e = base.SpawnEnemy();
@@ -25,7 +24,9 @@ public class DefeatAllEnemies_ScenarioManager : Enemies_ScenarioManager {
         return e; 
     }
     private void UpdateObjText() {
+        Debug.Log($"Defeat {destroyedEnemies}/{numberOfEnemies} enemies"); 
        objectiveText.text = $"Defeat {destroyedEnemies}/{numberOfEnemies} enemies";
+
     }
 
 }

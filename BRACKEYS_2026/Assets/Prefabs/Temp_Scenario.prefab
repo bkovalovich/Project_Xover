@@ -508,7 +508,7 @@ GameObject:
   - component: {fileID: 9144769168312740058}
   - component: {fileID: 4743356282949020478}
   m_Layer: 8
-  m_Name: playerbounds
+  m_Name: Boundary Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1006,7 +1006,7 @@ GameObject:
   - component: {fileID: 6358216936926339876}
   - component: {fileID: 5377635588279350003}
   m_Layer: 8
-  m_Name: playerbounds
+  m_Name: Boundary Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1172,7 +1172,7 @@ GameObject:
   - component: {fileID: 1675809181573814229}
   - component: {fileID: 4002984945662063503}
   m_Layer: 8
-  m_Name: playerbounds
+  m_Name: Boundary Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1338,7 +1338,7 @@ GameObject:
   - component: {fileID: 2675567220868480994}
   - component: {fileID: 3629276639008600751}
   m_Layer: 8
-  m_Name: playerbounds
+  m_Name: Boundary Bottom
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

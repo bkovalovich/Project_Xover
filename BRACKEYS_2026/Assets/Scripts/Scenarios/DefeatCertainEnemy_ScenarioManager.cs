@@ -6,7 +6,7 @@ public class DefeatCertainEnemy_ScenarioManager : Enemies_ScenarioManager {
  
     public override void SetupGame() {
         base.SetupGame();
-        GameObject g = Instantiate(bossEnemy, bossSpawn.position, Quaternion.identity);
+        GameObject g = Instantiate(bossEnemy, bossSpawn);
         g.GetComponent<Enemy>().destroyed.Subscribe(OnWinCon);
     }
 }

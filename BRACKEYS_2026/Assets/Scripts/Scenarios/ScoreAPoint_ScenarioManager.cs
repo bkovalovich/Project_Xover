@@ -3,13 +3,9 @@ using UnityEngine;
 
 public class ScoreAPoint_ScenarioManager : ScenarioManager
 {
-    [SerializeField] GameObject pointScoringPrefab;
-    [SerializeField] GameObject enemyGoalPrefab;
-    [SerializeField] GameObject playerGoalPrefab;
     public override void SetupGame()
     {
         base.SetupGame();
-        GameManager.instance.player.transform.position = transform.position;
     }
 
     public void CollisionDetected(bool winCon)

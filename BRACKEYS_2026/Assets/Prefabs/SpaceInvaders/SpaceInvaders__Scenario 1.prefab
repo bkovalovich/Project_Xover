@@ -233,7 +233,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1829791786236135486, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: m_Name
-      value: SpaceInvaders_Scenario
+      value: SpaceInvaders__Scenario 1
       objectReference: {fileID: 0}
     - target: {fileID: 4654824200395983552, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: m_Color.b
@@ -286,6 +286,14 @@ PrefabInstance:
     - target: {fileID: 5685742847805959790, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697616165968435793, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+      propertyPath: maxTime
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697616165968435793, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+      propertyPath: usesTimer
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6697616165968435793, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: enemyPrefab
