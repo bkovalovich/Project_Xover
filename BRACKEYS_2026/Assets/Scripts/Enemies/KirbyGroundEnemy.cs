@@ -31,6 +31,12 @@ public class KirbyGroundEnemy : Enemy
         UpdateSpriteFacing();
         // check if grounded
         GroundCheck();
+
+        if (isJumping)
+        {
+            return;
+        }
+
         if (isGrounded)
         {
             sprite.sprite = walkSprite;
@@ -85,15 +91,9 @@ public class KirbyGroundEnemy : Enemy
 
     public void GroundCheck()
     {
-        // check if grounded and set isGrounded accordingly
-        if (rb.linearVelocityY > 0.1f)
-        {
-            return; // if moving upwards, skip ground check to prevent false positives
-        }
-
         RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, 0.2f, LayerMask.GetMask("Ground"));
         isGrounded = hit.collider != null;
-        if (isGrounded)
+        if (isGrounded && rb.linearVelocityY <= 0)
         {
             isJumping = false;
         }
@@ -111,24 +111,25 @@ public class KirbyGroundEnemy : Enemy
 
         if (reporter.name == "JumpCollider_Left")
         {
-            Jump(jumpVelocity);
+            Jump(jumpVelocity, -1);
         }
 
         if (reporter.name == "JumpCollider_Right")
         {
-            Jump(jumpVelocity);
+            Jump(jumpVelocity, 1);
         }
 
     }
 
-    public void Jump(float jumpVelocity)
+    public void Jump(float jumpVelocity, int dir)
     {
-        Debug.Log("trying to jump");
+        Debug.Log("trying to jump" + isGrounded + isJumping);
         if (isGrounded && !isJumping)
         {
 
             isJumping = true;
             rb.linearVelocity = new Vector2(0, 0);
+            direction = dir;
             rb.AddForce(new Vector2(direction * speed, jumpVelocity), ForceMode2D.Impulse);
 
         }

@@ -12,17 +12,16 @@ public class Enemies_ScenarioManager : ScenarioManager
             SpawnEnemy();
         }
     }
-    public virtual Enemy SpawnEnemy() {
+    public virtual Enemy SpawnEnemy()
+    {
         Transform spawnPoint = RandomSpawnPoints();
         GameObject gameObject = Instantiate(enemyPrefab, spawnPoint.position, Quaternion.identity);
         gameObject.transform.parent = this.transform;
+
         Enemy e = gameObject.GetComponent<Enemy>();
-        if (spawnPoint.localScale.x < 0) {
-            e.transform.localScale = new Vector2(e.transform.localScale.x * -1, e.transform.localScale.y);
-            e.direction = -1;
-        } else {
-            e.direction = 1;
-        }
+
+        int dir = spawnPoint.localScale.x < 0 ? -1 : 1;
+        e.SetFacing(dir);
 
         e.scenarioManager = this;
         return e;

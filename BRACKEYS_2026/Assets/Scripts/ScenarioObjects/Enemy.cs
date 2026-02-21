@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
+using System.Collections;
 
 public abstract class Enemy : ScenarioObject {
     [HideInInspector] public int direction;
@@ -37,5 +39,14 @@ public abstract class Enemy : ScenarioObject {
     }
     protected void Update() {
         Move();
+    }
+
+    public virtual void SetFacing(int dir)
+    {
+        direction = dir < 0 ? -1 : 1;
+
+        // flip visuals only, not transform scale
+        if (TryGetComponent<SpriteRenderer>(out var sr))
+            sr.flipX = direction < 0;
     }
 }
