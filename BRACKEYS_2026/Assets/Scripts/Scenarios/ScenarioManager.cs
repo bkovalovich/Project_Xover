@@ -5,7 +5,8 @@ using DG.Tweening;
 
 public abstract class ScenarioManager : MonoBehaviour
 {
-    public Camera scenarioCamera; 
+    public Camera scenarioCamera;
+    public Canvas scenarioCanvas;
     [SerializeField] SpriteRenderer backgroundSprite;
     [SerializeField] string objective;
     [SerializeField] Color textColor; 
@@ -24,6 +25,7 @@ public abstract class ScenarioManager : MonoBehaviour
     public virtual void SetupGame() {
         Debug.Log("fork off");
         scenarioCamera = transform.parent.GetComponentInChildren<Camera>();
+        scenarioCanvas = transform.parent.GetComponentInChildren<Canvas>();
         objectiveText = gameObject.transform.parent.GetComponentInChildren<TMP_Text>();
         //objectiveText.text = objective;
         objectiveText.color = textColor; 
@@ -52,6 +54,10 @@ public abstract class ScenarioManager : MonoBehaviour
         float maxY = bounds.max.y;
 
         return new Vector2(Random.Range(minX, maxX), Random.Range(minY, maxY));
+    }
+    protected Vector2 GetScreenCenter()
+    {
+        return backgroundSprite.bounds.center;
     }
     protected void GetOtherScenarios() {
         List<GameObject> scenarios = new List<GameObject>(GameObject.FindGameObjectsWithTag("ScenarioAnchor"));

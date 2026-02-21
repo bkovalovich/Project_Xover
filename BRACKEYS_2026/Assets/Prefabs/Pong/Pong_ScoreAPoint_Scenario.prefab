@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 6461458785486949154}
   - component: {fileID: 1797688129997644302}
   m_Layer: 0
-  m_Name: ScoreAPoint_Scenario
+  m_Name: Pong_ScoreAPoint_Scenario
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1152,7 +1152,7 @@ Transform:
   m_GameObject: {fileID: 8983128686008067835}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1174,7 +1174,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8925ff92cc45d134c82c475312b4d09f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScoreAPoint_ScenarioManager
-  backgroundSprite: {fileID: 0}
+  scenarioCamera: {fileID: 0}
+  backgroundSprite: {fileID: 3859237084910348725}
+  objective: Score a Point
+  textColor: {r: 0, g: 0, b: 0, a: 0}
+  otherScenarios: []
   pointScoringPrefab: {fileID: 4977315576317907217}
-  enemyGoalPrefab: {fileID: 0}
-  playerGoalPrefab: {fileID: 0}
+  enemyGoalPrefab: {fileID: 4770609358581340256}
+  playerGoalPrefab: {fileID: 4707341173241871160}

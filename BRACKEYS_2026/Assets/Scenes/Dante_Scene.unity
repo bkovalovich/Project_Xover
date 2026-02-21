@@ -333,10 +333,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2442620510658422277, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
+      propertyPath: m_fontSize
+      value: 27.85
+      objectReference: {fileID: 0}
     - target: {fileID: 3723057244523283061, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
       propertyPath: m_Name
       value: GAME_MAIN
       objectReference: {fileID: 0}
+    - target: {fileID: 7078334555231824924, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
+      propertyPath: m_fontSize
+      value: 23.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605106905964698448, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
+      propertyPath: scenarioList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7605106905964698448, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
+      propertyPath: 'scenarioList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 3199236835151063622, guid: 56c18238596b2e3488b0db47c11479ff, type: 3}
+    - target: {fileID: 7605106905964698448, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
+      propertyPath: 'scenarioList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 3199236835151063622, guid: 56c18238596b2e3488b0db47c11479ff, type: 3}
+    - target: {fileID: 7605106905964698448, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
+      propertyPath: 'scenarioList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 6732431916265524543, guid: 4a4371a193207c04caff367cd78c8ef2, type: 3}
     - target: {fileID: 8344513167562407791, guid: a971dbff78c30db4ca56ad8a82a6de58, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.50857
