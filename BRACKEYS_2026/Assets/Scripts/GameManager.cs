@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour {
     private GameObject PickNextScenario() {
         return scenarioList[Random.Range(0, scenarioList.Length)];
     }
+    //IEnumerator LoadNextScenario(bool successful) {
+
+    //}
     public void LoadNextScenario(bool successful) {
         Debug.Log("next scenario loaded");
         ScenarioManager completed = currentScenario; //finish previous scenario

@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using DG.Tweening; 
 
 public abstract class ScenarioManager : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public abstract class ScenarioManager : MonoBehaviour
     }
     protected virtual void OnWinCon() {
         objectiveText.text = "Objective Complete!";
+
         GameManager.instance.LoadNextScenario(true);
     }
     protected virtual void OnLoseCon() {
