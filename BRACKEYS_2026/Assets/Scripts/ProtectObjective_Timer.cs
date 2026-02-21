@@ -1,31 +1,49 @@
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] Image fill;
-    ProtectObjestive_ScenarioManager parent;
+    private Image fill;
+    ScenarioManager parent;
     private float maxTime;
-    private float time;
+    private float current;
+    private Coroutine timerCoroutine; 
 
-    public void Awake()
-    {
-        parent = GetComponent<ProtectObjestive_ScenarioManager>();
-        fill = parent.scenarioCanvas.transform.Find("Timer").GetChild(0).GetComponent<Image>();
-        maxTime = parent.GetDefendTime();
-        time = maxTime;
+    //public void Awake()
+    //{
+    //    parent = GetComponent<ProtectObjestive_ScenarioManager>();
+    //    fill = parent.scenarioCanvas.transform.Find("Timer").GetChild(0).GetComponent<Image>();
+    //    maxTime = parent.GetDefendTime();
+    //    time = maxTime;
+    //}
+    private void Awake() {
+        fill = GetComponent<Image>(); 
+    }
+    public void Toggle(bool val) {
+        fill.enabled = val; 
+    }
+    public void StartTimer(float maxTime, ScenarioManager parent) {
+        Toggle(true);
+        this.maxTime = maxTime; 
+        this.parent = parent;
+        if (timerCoroutine != null) StopCoroutine(timerCoroutine);
+        timerCoroutine = StartCoroutine(TimerSeq());
     }
 
-    private void FixedUpdate()
-    {
-        time -= Time.fixedDeltaTime;
-        fill.fillAmount = time / maxTime;
+    IEnumerator TimerSeq() {
+        current = maxTime;
 
-        if (time <= 0)
-        {
-            time = 0;
-            fill.fillAmount = 0;
-            parent.VictoryCheck(true);
+        while (current > 0) {
+            current -= Time.deltaTime;
+            fill.fillAmount = current / maxTime;
+            yield return null; 
         }
+        current = 0;
+        fill.fillAmount = 0;
+        parent.OnTimerFinish(); 
     }
 }
+
+
+

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DefensiveObject : ScenarioObject
 {
@@ -8,7 +8,7 @@ public class DefensiveObject : ScenarioObject
 
     protected void OnTriggerEnter2D(Collider2D collision)
     {
-        throw new System.NotImplementedException();
+        //throw new System.NotImplementedException();
     }
 
     protected virtual void TakeDamage()

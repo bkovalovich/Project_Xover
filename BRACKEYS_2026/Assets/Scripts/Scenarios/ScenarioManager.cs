@@ -5,8 +5,9 @@ using DG.Tweening;
 
 public abstract class ScenarioManager : MonoBehaviour
 {
-    public Camera scenarioCamera;
-    public Canvas scenarioCanvas;
+   [HideInInspector] public Camera scenarioCamera;
+   [HideInInspector] public Canvas scenarioCanvas;
+
     [SerializeField] SpriteRenderer backgroundSprite;
     [SerializeField] string objective;
     [SerializeField] Color textColor; 
@@ -16,20 +17,28 @@ public abstract class ScenarioManager : MonoBehaviour
     
     public Event WinConCompleted = new Event();
     protected bool currentGame;
-    [HideInInspector] public List<GameObject> otherScenarios; 
+    [HideInInspector] public List<GameObject> otherScenarios;
+    //TIMER
+    [SerializeField] bool usesTimer;
+    private Timer timer;
+    [SerializeField] float maxTime; 
 
     private void Awake() {
         GetOtherScenarios(); 
     }
 
     public virtual void SetupGame() {
-        Debug.Log("fork off");
         scenarioCamera = transform.parent.GetComponentInChildren<Camera>();
         scenarioCanvas = transform.parent.GetComponentInChildren<Canvas>();
         objectiveText = gameObject.transform.parent.GetComponentInChildren<TMP_Text>();
-        //objectiveText.text = objective;
-        objectiveText.color = textColor; 
+        objectiveText.color = textColor;
+        timer = scenarioCanvas.GetComponentInChildren<Timer>();
+        if (usesTimer)
+            timer?.StartTimer(maxTime, this);
+        else
+            timer?.Toggle(false); 
     }
+    public virtual void OnTimerFinish() { }
 
     public virtual void PlayerEnterGame() {
         currentGame = true;
