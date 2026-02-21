@@ -50,10 +50,10 @@ public class GameManager : MonoBehaviour {
     private GameObject PickNextScenario() {
         return scenarioList[Random.Range(0, scenarioList.Length)];
     }
-    public IEnumerator LoadNextScenario(bool successful) {
+    public IEnumerator LoadNextScenario(bool successful, ScenarioManager sceneToLoad) {
         yield return new WaitForSeconds(1f);
 
-        ScenarioManager completed = currentScenario; //finish previous scenario
+        ScenarioManager completed = sceneToLoad; //finish previous scenario
         ScenarioContainer container = completed.transform.parent.GetComponent<ScenarioContainer>();
 
         Image overlay = container.overlay; //start overlay transition

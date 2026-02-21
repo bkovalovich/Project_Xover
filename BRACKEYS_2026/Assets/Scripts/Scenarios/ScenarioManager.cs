@@ -51,11 +51,11 @@ public abstract class ScenarioManager : MonoBehaviour
     protected virtual void OnWinCon() {
         objectiveText.text = "Objective Complete!";
         objectiveText.transform.DOPunchScale(new Vector3(1.2f, 1.2f, 1), 1); 
-        StartCoroutine(GameManager.instance.LoadNextScenario(true));
+        StartCoroutine(GameManager.instance.LoadNextScenario(true, this));
     }
     protected virtual void OnLoseCon() {
         objectiveText.text = "Objective Failed!";
-        StartCoroutine(GameManager.instance.LoadNextScenario(false));
+        StartCoroutine(GameManager.instance.LoadNextScenario(false, this));
     }
     protected Vector2 GetRandomSpawnPoint() {
         Bounds bounds = backgroundSprite.bounds;
