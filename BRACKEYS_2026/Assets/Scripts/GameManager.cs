@@ -70,8 +70,9 @@ public class GameManager : MonoBehaviour {
 
         completed.FinishScenario(); 
         GameObject newScenario = Instantiate(PickNextScenario(), container.transform); //spawn new scenario
-        newScenario.GetComponent<ScenarioManager>().SetupGame(); 
-        SpawnPlayerInScenario(newScenario);
+        newScenario.GetComponent<ScenarioManager>().SetupGame();
+        if (currentScenario == sceneToLoad)
+            SpawnPlayerInScenario(newScenario);
         //yield return new WaitForSeconds(1);
         tween = overlay.DOFade(0, 1);
         container.particles.Pause(); 
