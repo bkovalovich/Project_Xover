@@ -16,7 +16,7 @@ public abstract class ScenarioManager : MonoBehaviour
     //protected int ID;
     
     public Event WinConCompleted = new Event();
-    protected bool currentGame;
+    [SerializeField] protected bool currentGame;
     [HideInInspector] public List<GameObject> otherScenarios;
     //TIMER
     [SerializeField] bool usesTimer;
@@ -70,7 +70,7 @@ public abstract class ScenarioManager : MonoBehaviour
     {
         return backgroundSprite.bounds.center;
     }
-    protected void GetOtherScenarios() {
+    public void GetOtherScenarios() {
         List<GameObject> scenarios = new List<GameObject>(GameObject.FindGameObjectsWithTag("ScenarioAnchor"));
         foreach (GameObject scenario in scenarios) {
             if (scenario == this.gameObject) {

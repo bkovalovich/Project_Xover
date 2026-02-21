@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Warp_PlayerState : PlayerState {
@@ -36,9 +37,9 @@ public class Warp_PlayerState : PlayerState {
 
         ScenarioManager closestScript = closestScenario?.GetComponentInChildren<ScenarioManager>();
         if (closestScript != GameManager.instance.CurrentScenario) {
-            GameManager.instance.CurrentScenario = closestScript;
-            player.rb.position = closestScript.gameObject.transform.position;
+            GameManager.instance.SpawnPlayerInScenario(closestScript.gameObject);
             StartCoroutine(player.Invulnerability(0.7f));
+            yield return new WaitForFixedUpdate();
             player.warpTrajectory.Burst(player.rb.position);
 
         }

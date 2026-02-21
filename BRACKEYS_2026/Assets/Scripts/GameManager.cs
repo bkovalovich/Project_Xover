@@ -29,23 +29,29 @@ public class GameManager : MonoBehaviour {
         score = 0;
         mainCanvas.Score = score;
         health = player.GetComponent<Player>().playerInfo.health;
-        mainCanvas.Health = health; 
+        mainCanvas.Health = health;
+        GameObject startingScenario = null;
         for (int i = 0; i < spawnPoints.Length; i++) {
             GameObject scenario = Instantiate(PickNextScenario(), spawnPoints[i].transform);
             scenario.GetComponent<ScenarioManager>().SetupGame();
-            if (i == 0) SpawnPlayerInScenario(scenario);                   
+            if (i == 0) startingScenario = scenario;                  
         }
+        SpawnPlayerInScenario(startingScenario);
         
     }
     public void PlayerTakeDamage() {
         health--;
         mainCanvas.Health = health; 
     }
-    private void SpawnPlayerInScenario(GameObject scenario) {
+    public void SpawnPlayerInScenario(GameObject scenario) {
         player.transform.position = scenario.transform.position;
         ScenarioManager scenarioScript = scenario.GetComponent<ScenarioManager>();
-        scenarioScript.PlayerEnterGame();
-        CurrentScenario = scenarioScript;         
+        if (scenarioScript == null)
+        {
+            Debug.LogError("ScenarioManager component not found on scenario GameObject.");
+            return;
+        }
+        TellScenariosWhichIsActive(scenarioScript);
     }
     private GameObject PickNextScenario() {
         return scenarioList[Random.Range(0, scenarioList.Length)];
@@ -72,6 +78,35 @@ public class GameManager : MonoBehaviour {
         yield return tween.WaitForCompletion();
 
 
+    }
+
+    public void TellScenariosWhichIsActive(ScenarioManager scenarioScript)
+    {
+        if (scenarioScript == null)
+        {
+            Debug.LogError("scenarioScript is null.");
+            return;
+        }
+        scenarioScript.PlayerEnterGame();
+        scenarioScript.GetOtherScenarios();
+        int i;
+        for (i = 0; i < scenarioScript.otherScenarios.Count; i++)
+        {
+            var otherScenarioGO = scenarioScript.otherScenarios[i];
+            if (otherScenarioGO == null)
+            {
+                Debug.LogError($"otherScenarios[{i}] is null");
+                continue;
+            }
+            var otherScenarioManager = otherScenarioGO.GetComponentInChildren<ScenarioManager>();
+            if (otherScenarioManager == null)
+            {
+                Debug.LogError($"ScenarioManager not found in children of {otherScenarioGO.name}");
+                continue;
+            }
+            otherScenarioManager.PlayerLeaveGame();
+        }
+        CurrentScenario = scenarioScript;
     }
 
 }
