@@ -366,6 +366,10 @@ PrefabInstance:
       value: -1.67
       objectReference: {fileID: 0}
     - target: {fileID: 5557845411626986925, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12.526483
+      objectReference: {fileID: 0}
+    - target: {fileID: 5557845411626986925, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.96
       objectReference: {fileID: 0}
@@ -407,6 +411,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5685742847805959790, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6697616165968435793, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6697616165968435793, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
@@ -458,10 +466,15 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8104442283352425665, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 12.526483
+      objectReference: {fileID: 0}
+    - target: {fileID: 8104442283352425665, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.96
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6697616165968435793, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 5685742847805959790, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
@@ -470,10 +483,52 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5685742847805959790, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7148903513233299510}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1829791786236135486, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6003159860984656142}
   m_SourcePrefab: {fileID: 100100000, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+--- !u!212 &329782250133819329 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 4654824200395983552, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+  m_PrefabInstance: {fileID: 4902976091633353985}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &787301151522106223 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5685742847805959790, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
   m_PrefabInstance: {fileID: 4902976091633353985}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &6732431916265524543 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1829791786236135486, guid: 21c3700574852cf4c88dfc52f0c6a9c2, type: 3}
+  m_PrefabInstance: {fileID: 4902976091633353985}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6003159860984656142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6732431916265524543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ec88a367b6902c14b9c875f4da16fde0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Kirby_Scenario
+  scenarioCamera: {fileID: 0}
+  backgroundSprite: {fileID: 329782250133819329}
+  objective: Defeat All Enemies
+  textColor: {r: 0, g: 0, b: 0, a: 1}
+  otherScenarios: []
+  enemyPrefab: {fileID: 0}
+  numberOfEnemies: 3
+  spawnPoints: []
+  enemySpawnDataList:
+  - enemyPrefab: {fileID: 8755692476866298902, guid: 0528868c1f6a1f046b1184c796dd1fac, type: 3}
+    spawnPoint: {fileID: 3864062721452381484}
+  - enemyPrefab: {fileID: 8755692476866298902, guid: 0528868c1f6a1f046b1184c796dd1fac, type: 3}
+    spawnPoint: {fileID: 2848923322929761195}
+  - enemyPrefab: {fileID: 8755692476866298902, guid: 356e975fd3ba20e438ad2c8fa831afcd, type: 3}
+    spawnPoint: {fileID: 6156730286051722980}
+  - enemyPrefab: {fileID: 8755692476866298902, guid: 356e975fd3ba20e438ad2c8fa831afcd, type: 3}
+    spawnPoint: {fileID: 3492287180100714294}

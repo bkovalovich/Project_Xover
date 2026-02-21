@@ -15,13 +15,20 @@ public class KirbyGroundEnemy : Enemy
     [SerializeField] private SpriteRenderer sprite;
     [SerializeField] private Sprite walkSprite;
     [SerializeField] private Sprite jumpSprite;
- 
+
+    protected new void Awake()
+    {
+        base.Awake();
+        wanderTimer = wanderTimer + Random.Range(-1, 2);
+    }
+
     protected override void Attack()
     {
     }
 
     protected override void Move()
     {
+        UpdateSpriteFacing();
         // check if grounded
         GroundCheck();
         if (isGrounded)
@@ -29,7 +36,9 @@ public class KirbyGroundEnemy : Enemy
             sprite.sprite = walkSprite;
             WanderTimerCheck();
             if (Wander)
+            {
                 rb.linearVelocity = new Vector2(direction * speed, 0);
+            }
             else
                 rb.linearVelocity = new Vector2(0, 0);
         }
@@ -50,30 +59,40 @@ public class KirbyGroundEnemy : Enemy
         {
             Wander = !Wander;
             wanderTimer = 2f;
-            int temp = Random.Range(0, 2);
-            if (temp == 0)
+            if (Wander)
             {
-                direction = -1;
-                sprite.flipX = true;
+                WanderRandomDirection();
             }
 
-            else
-            {
-                direction = 1;
-                sprite.flipX = false;
-            }
+        }
+    }
+
+    public void WanderRandomDirection()
+    {
+        int temp = Random.Range(0, 2);
+        if (temp == 0)
+        {
+            direction = -1;
+
+        }
+
+        else
+        {
+            direction = 1;
+
         }
     }
 
     public void GroundCheck()
     {
         // check if grounded and set isGrounded accordingly
-        if ( rb.linearVelocityY > 0)
+        if (rb.linearVelocityY > 0.1f)
         {
-            isGrounded = false;
-            return;
+            return; // if moving upwards, skip ground check to prevent false positives
         }
-        isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, 0.1f, LayerMask.GetMask("Ground"));
+
+        RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, 0.2f, LayerMask.GetMask("Ground"));
+        isGrounded = hit.collider != null;
         if (isGrounded)
         {
             isJumping = false;
@@ -88,12 +107,6 @@ public class KirbyGroundEnemy : Enemy
         float jumpHeight = (colliderTopY - transform.position.y) + 0.1f; // add a small buffer to ensure the jump is high enough
         float grav = Mathf.Abs(Physics2D.gravity.y * rb.gravityScale);
         float jumpVelocity = Mathf.Sqrt(2 * grav * jumpHeight);
-
-        float playerX = other.gameObject.transform.position.x;
-        if (playerX > transform.position.x)
-            direction = 1;
-        else
-            direction = -1;
 
 
         if (reporter.name == "JumpCollider_Left")
@@ -111,7 +124,7 @@ public class KirbyGroundEnemy : Enemy
     public void Jump(float jumpVelocity)
     {
         Debug.Log("trying to jump");
-        if (isGrounded)
+        if (isGrounded && !isJumping)
         {
 
             isJumping = true;
@@ -121,5 +134,17 @@ public class KirbyGroundEnemy : Enemy
         }
     }
 
+    public void UpdateSpriteFacing()
+    {
+        if (rb.linearVelocityX > 0.05)
+        {
+            sprite.flipX = true;
+        }
+        else if (rb.linearVelocityX < -0.05)
+        {
+            sprite.flipX = false;
+        }
+
+    }
 }
 
