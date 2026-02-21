@@ -38,6 +38,9 @@ public class Warp_PlayerState : PlayerState {
         if (closestScript != GameManager.instance.CurrentScenario) {
             GameManager.instance.CurrentScenario = closestScript;
             player.rb.position = closestScript.gameObject.transform.position;
+            StartCoroutine(player.Invulnerability(0.7f));
+            player.warpTrajectory.Burst(player.rb.position);
+
         }
         player.stateMachine.ChangeToDefault();
     }

@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
 
     public Vector2 pointOfLastCollision;
     private float currentSpeed;
-    [HideInInspector] public bool holdingWarp = false, isAttacking;
+    [HideInInspector] public bool holdingWarp = false, isAttacking, invulnerable;
 
     [HideInInspector] public Vector2 currentMoveInput, currentMouseInput, currentMouseWorldInput;
 
@@ -94,7 +94,7 @@ public class Player : MonoBehaviour
         playerActions.Disable();
     }
     private void OnCollisionEnter2D(Collision2D collision) {
-        if(collision.gameObject.layer == 7 && stateMachine.IsInState(knockbackState) == false) {
+        if(collision.gameObject.layer == 7 && stateMachine.IsInState(knockbackState) == false && !invulnerable) {
             pointOfLastCollision = collision.gameObject.transform.position;
             stateMachine.ChangeState(knockbackState);
             GameManager.instance.PlayerTakeDamage(); 
@@ -161,6 +161,13 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(duration);
         attackScript.Attack(false);
         isAttacking = false; 
+    }
+    public IEnumerator Invulnerability(float t) {
+        invulnerable = true;
+        sr.color = new Color(1, 1, 1, 0.7f);
+        yield return new WaitForSeconds(t);
+        invulnerable = false;
+        sr.color = Color.white; 
     }
 
 }

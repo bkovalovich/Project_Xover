@@ -19,7 +19,7 @@ public abstract class Enemy : ScenarioObject {
     }
 
     protected void OnTriggerEnter2D(Collider2D collision) {
-        if (collision.gameObject.name == "PlayerAttack") {
+        if (collision.gameObject.tag == "PlayerAttack") {
             TakeDamage(); 
         }
         if(collision.gameObject.tag == "DeathPlane") {
