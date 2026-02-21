@@ -1,0 +1,149 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kirby Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 4
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 0
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 0
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_IgnorePlatformSupport: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+    - {fileID: 102900000, guid: 3dcd65b82024a004f8ff09845d7a5100, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - ee9149207bc3f05448baac37356aaddb: 2107380732
+    - ee9149207bc3f05448baac37356aaddb: 520081688
+    - ee9149207bc3f05448baac37356aaddb: 2071509114
+    - ee9149207bc3f05448baac37356aaddb: -679172828
+    - ee9149207bc3f05448baac37356aaddb: 1714947299
+    - ee9149207bc3f05448baac37356aaddb: 393980011
+    - ee9149207bc3f05448baac37356aaddb: -169541447
+    - ee9149207bc3f05448baac37356aaddb: 1153175963
+    - ee9149207bc3f05448baac37356aaddb: 1469367283
+    - ee9149207bc3f05448baac37356aaddb: 136102169
+    - ee9149207bc3f05448baac37356aaddb: 757757806
+    - ee9149207bc3f05448baac37356aaddb: 1637412519
+    - ee9149207bc3f05448baac37356aaddb: 1135236190
+    - ee9149207bc3f05448baac37356aaddb: 1574726179
+    - ee9149207bc3f05448baac37356aaddb: -1400562177
+    - ee9149207bc3f05448baac37356aaddb: -690309929
+    - ee9149207bc3f05448baac37356aaddb: 754266330
+    - ee9149207bc3f05448baac37356aaddb: -1232246750
+    - ee9149207bc3f05448baac37356aaddb: 1726148104
+    - ee9149207bc3f05448baac37356aaddb: -1635634980
+    - ee9149207bc3f05448baac37356aaddb: -271256371
+    - ee9149207bc3f05448baac37356aaddb: 2108736025
+    - ee9149207bc3f05448baac37356aaddb: -335563603
+    - ee9149207bc3f05448baac37356aaddb: 743595578
+    - ee9149207bc3f05448baac37356aaddb: -2037741850
+    - ee9149207bc3f05448baac37356aaddb: 1576435436
+    - ee9149207bc3f05448baac37356aaddb: 1429375277
+    - ee9149207bc3f05448baac37356aaddb: 1684216105
+    - ee9149207bc3f05448baac37356aaddb: -809528820
+    - ee9149207bc3f05448baac37356aaddb: 581648395
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 2107380732, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 520081688, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 2071509114, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -679172828, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1714947299, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 393980011, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -169541447, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1153175963, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1469367283, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 136102169, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 757757806, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1637412519, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1135236190, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1574726179, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -1400562177, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -690309929, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 754266330, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -1232246750, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1726148104, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -1635634980, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -271256371, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 2108736025, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -335563603, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 743595578, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -2037741850, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1576435436, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1429375277, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 1684216105, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: -809528820, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  - {fileID: 581648395, guid: ee9149207bc3f05448baac37356aaddb, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Kirby_Tilemap-01_4
+  - Kirby_Tilemap-01_5
+  - Kirby_Tilemap-01_6
+  - Kirby_Tilemap-01_7
+  - Kirby_Tilemap-01_0
+  - Kirby_Tilemap-01_1
+  - Kirby_Tilemap-01_2
+  - Kirby_Tilemap-01_3
+  - Kirby_Tilemap-01_8
+  - Kirby_Tilemap-01_9
+  - Kirby_Tilemap-01_22
+  - Kirby_Tilemap-01_23
+  - Kirby_Tilemap-01_20
+  - Kirby_Tilemap-01_21
+  - Kirby_Tilemap-01_26
+  - Kirby_Tilemap-01_27
+  - Kirby_Tilemap-01_24
+  - Kirby_Tilemap-01_25
+  - Kirby_Tilemap-01_28
+  - Kirby_Tilemap-01_29
+  - Kirby_Tilemap-01_19
+  - Kirby_Tilemap-01_18
+  - Kirby_Tilemap-01_17
+  - Kirby_Tilemap-01_16
+  - Kirby_Tilemap-01_15
+  - Kirby_Tilemap-01_14
+  - Kirby_Tilemap-01_13
+  - Kirby_Tilemap-01_12
+  - Kirby_Tilemap-01_11
+  - Kirby_Tilemap-01_10
+  m_RenderDataMap: {}
+  m_Tag: Kirby Atlas
+  m_IsVariant: 0

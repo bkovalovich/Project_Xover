@@ -34,12 +34,12 @@ public class KirbyGroundEnemy : Enemy
 
         if (isJumping)
         {
+            rb.linearVelocity = new Vector2(direction * speed, rb.linearVelocityY);
             return;
         }
 
         if (isGrounded)
         {
-            sprite.sprite = walkSprite;
             WanderTimerCheck();
             if (Wander)
             {
@@ -48,10 +48,7 @@ public class KirbyGroundEnemy : Enemy
             else
                 rb.linearVelocity = new Vector2(0, 0);
         }
-        else
-        {
-            sprite.sprite = jumpSprite;
-        }
+
 
         // move across screen
 
@@ -93,9 +90,28 @@ public class KirbyGroundEnemy : Enemy
     {
         RaycastHit2D hit = Physics2D.Raycast(groundCheckPoint.position, Vector2.down, 0.2f, LayerMask.GetMask("Ground"));
         isGrounded = hit.collider != null;
+        if (isGrounded)
+        {
+            sprite.sprite = walkSprite;
+            WallCheck();
+        }
+        else
+        {
+            sprite.sprite = jumpSprite;
+        }
+
         if (isGrounded && rb.linearVelocityY <= 0)
         {
             isJumping = false;
+        }
+    }
+
+    public void WallCheck()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.right * direction, 1f, LayerMask.GetMask("Ground"));
+        if (hit.collider != null)
+        {
+            Jump(6f, direction);
         }
     }
 
@@ -146,6 +162,13 @@ public class KirbyGroundEnemy : Enemy
             sprite.flipX = false;
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(groundCheckPoint.position, groundCheckPoint.position + Vector3.down * 0.2f);
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.right * direction * 1f);
     }
 }
 

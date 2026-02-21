@@ -329,8 +329,8 @@ MonoBehaviour:
   direction: 0
   scenarioManager: {fileID: 0}
   health: 0
-  speed: 3
-  amplitude: 0.5
+  speed: 4
+  amplitude: 0.75
   frequence: 3
 --- !u!1 &9189561045019036122
 GameObject:
