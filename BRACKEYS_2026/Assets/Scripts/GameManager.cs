@@ -60,11 +60,13 @@ public class GameManager : MonoBehaviour {
         Tween tween = overlay.DOFade(1, 1);
         container.particles.Play();
         yield return tween.WaitForCompletion();
+        Debug.Log("got past wait for complete");
+
         completed.FinishScenario(); 
         GameObject newScenario = Instantiate(PickNextScenario(), container.transform); //spawn new scenario
         newScenario.GetComponent<ScenarioManager>().SetupGame(); 
         SpawnPlayerInScenario(newScenario);
-        yield return new WaitForSeconds(1);
+        //yield return new WaitForSeconds(1);
         tween = overlay.DOFade(0, 1);
         container.particles.Pause(); 
         yield return tween.WaitForCompletion();
