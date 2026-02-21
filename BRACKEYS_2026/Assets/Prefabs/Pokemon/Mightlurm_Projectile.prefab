@@ -1,0 +1,111 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &7930809374286848135
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2270639102102708344, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: lifeSpan
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2751476893926579051, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_Name
+      value: Mightlurm_Projectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6628834633986810179, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6794461431658263821, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 02fb1895d94d71841bc6c24dff93ed97, type: 3}
+    - target: {fileID: 6794461431658263821, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_SortingOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349667492995601523, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_Radius
+      value: 0.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 8349667492995601523, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 2270639102102708344, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2751476893926579051, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1368005364251719759}
+  m_SourcePrefab: {fileID: 100100000, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+--- !u!1 &5197383439242034156 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2751476893926579051, guid: 9f0a857668e3b8e4ab97b0a601b3e702, type: 3}
+  m_PrefabInstance: {fileID: 7930809374286848135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1368005364251719759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5197383439242034156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd029beab00f37e45a32570c5c70e393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PokemonProjectile
+  lifeSpan: 0.15
+  speed: 0
+  projCount: 5

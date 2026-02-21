@@ -5,14 +5,14 @@ public abstract class Enemy : ScenarioObject {
 
     protected Rigidbody2D rb; 
     [HideInInspector] public Enemies_ScenarioManager scenarioManager; 
-    protected int health;
+    [SerializeField] public int health;
 
     public Event destroyed = new Event(); 
 
     protected abstract void Attack();
     protected abstract void Move();
 
-    protected void Awake() {
+    protected virtual void Awake() {
         rb = GetComponent<Rigidbody2D>(); 
     }
 

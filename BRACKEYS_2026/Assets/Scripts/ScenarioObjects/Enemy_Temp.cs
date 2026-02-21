@@ -2,7 +2,8 @@
 
 public class Enemy_Temp : Enemy
 {
-    private void Awake() {
+    protected override void Awake() {
+        base.Awake(); 
         health = 3;
     }
     protected override void Attack() {
