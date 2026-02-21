@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
     private Warp_PlayerState warpState;
     private Knockback_PlayerState knockbackState;
 
-    private Coroutine attackCoroutine; 
+    private Coroutine attackCoroutine;
+    private Animator animator; 
 
     //COMPONENTS
     [SerializeField] Transform rotationParent;
@@ -32,7 +33,7 @@ public class Player : MonoBehaviour
 
     public Vector2 pointOfLastCollision;
     private float currentSpeed;
-    [HideInInspector] public bool holdingWarp = false;
+    [HideInInspector] public bool holdingWarp = false, isAttacking;
 
     [HideInInspector] public Vector2 currentMoveInput, currentMouseInput, currentMouseWorldInput;
 
@@ -44,11 +45,12 @@ public class Player : MonoBehaviour
         stateMachine.Initialize(moveState);
 
         rb = GetComponent<Rigidbody2D>();
-        sr = GetComponent<SpriteRenderer>(); 
+        sr = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>(); 
         attackScript = GetComponentInChildren<PlayerAttack>();
         attackScript.Attack(false);
         playerActions = new PlayerInputActions();
-
+       
     }
 
     private void OnEnable() {
@@ -135,18 +137,30 @@ public class Player : MonoBehaviour
     }
     private void Update() {
         RotateToMouse();
+        Animate(); 
         stateMachine.CurrentState.FrameUpdate();
     }
     private void FixedUpdate() {
         stateMachine.CurrentState.PhysicsUpdate();
     }
+    private void Animate() {
+        Vector2 input = (currentMouseWorldInput - (Vector2)transform.position).normalized;
+        Debug.Log(input);
+        sr.flipX = input.x < 0 ? true : false;
+        animator.SetFloat("X", input.x);
+        animator.SetFloat("Y", input.y);
+        animator.SetBool("Attacking", isAttacking);
+    }
 
     IEnumerator Attack(float duration) {
+        isAttacking = false;
         attackScript.Attack(false);
         yield return null;
+        isAttacking = true; 
         attackScript.Attack(true);
         yield return new WaitForSeconds(duration);
         attackScript.Attack(false);
+        isAttacking = false; 
     }
 
 }
