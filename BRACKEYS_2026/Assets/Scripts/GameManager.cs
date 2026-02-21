@@ -85,6 +85,8 @@ public class GameManager : MonoBehaviour {
 
     public void TellScenariosWhichIsActive(ScenarioManager scenarioScript)
     {
+        string id = scenarioScript.GetComponentInParent<ScenarioContainer>().ID;
+        Debug.Log(id + " value on start is " + scenarioScript.currentGame);
         if (scenarioScript == null)
         {
             Debug.LogError("scenarioScript is null.");
@@ -110,6 +112,7 @@ public class GameManager : MonoBehaviour {
             otherScenarioManager.PlayerLeaveGame();
         }
         CurrentScenario = scenarioScript;
+        Debug.Log(id + " value on complete is " + CurrentScenario.currentGame);
     }
 
 }

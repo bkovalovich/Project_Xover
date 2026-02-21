@@ -16,7 +16,7 @@ public abstract class ScenarioManager : MonoBehaviour
     //protected int ID;
     
     public Event WinConCompleted = new Event();
-    [SerializeField] protected bool currentGame = false;
+    [SerializeField] public bool currentGame = false;
     [HideInInspector] public List<GameObject> otherScenarios;
     //TIMER
     [SerializeField] bool usesTimer;
@@ -24,7 +24,7 @@ public abstract class ScenarioManager : MonoBehaviour
     [SerializeField] float maxTime; 
 
     private void Awake() {
-        GetOtherScenarios(); 
+        // GetOtherScenarios(); 
     }
 
     public virtual void SetupGame() {
@@ -44,6 +44,7 @@ public abstract class ScenarioManager : MonoBehaviour
 
     public virtual void PlayerEnterGame() {
         currentGame = true;
+        Debug.Log("Player Entered Game");
     }
     public virtual void PlayerLeaveGame() {
         currentGame = false; 
@@ -72,12 +73,20 @@ public abstract class ScenarioManager : MonoBehaviour
     }
     public void GetOtherScenarios() {
         List<GameObject> scenarios = new List<GameObject>(GameObject.FindGameObjectsWithTag("ScenarioAnchor"));
-        foreach (GameObject scenario in scenarios) {
-            if (scenario == this.gameObject) {
-                scenarios.Remove(scenario);
+        List<GameObject> toRemove = new List<GameObject>();
+        foreach (GameObject scenario in scenarios)
+        {
+            var scenarioManager = scenario.GetComponentInChildren<ScenarioManager>();
+            if (scenarioManager != null && scenarioManager.gameObject == this.gameObject)
+            {
+                toRemove.Add(scenario);
             }
         }
-        otherScenarios = scenarios; 
+        foreach (GameObject scenario in toRemove)
+        {
+            scenarios.Remove(scenario);
+        }
+        otherScenarios = scenarios;
     }
     public void FinishScenario() {
         Destroy(this.gameObject);
