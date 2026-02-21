@@ -97,7 +97,8 @@ public class Player : MonoBehaviour
         if(collision.gameObject.layer == 7 && stateMachine.IsInState(knockbackState) == false && !invulnerable) {
             pointOfLastCollision = collision.gameObject.transform.position;
             stateMachine.ChangeState(knockbackState);
-            GameManager.instance.PlayerTakeDamage(); 
+            GameManager.instance.PlayerTakeDamage();
+            StartCoroutine(Invulnerability(1.7f));
         }
     }
     //CALLBACKS
@@ -164,7 +165,7 @@ public class Player : MonoBehaviour
     }
     public IEnumerator Invulnerability(float t) {
         invulnerable = true;
-        sr.color = new Color(1, 1, 1, 0.7f);
+        sr.color = new Color(1, 1, 1, 0.5f);
         yield return new WaitForSeconds(t);
         invulnerable = false;
         sr.color = Color.white; 

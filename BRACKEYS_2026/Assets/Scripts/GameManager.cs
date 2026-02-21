@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour {
 
         Image overlay = container.overlay; //start overlay transition
         Tween tween = overlay.DOFade(1, 1);
+        container.particles.gameObject.SetActive(true);
         container.particles.Play();
         yield return tween.WaitForCompletion();
         Debug.Log("got past wait for complete");
@@ -77,7 +78,9 @@ public class GameManager : MonoBehaviour {
             currentScenario.GetOtherScenarios();
         //yield return new WaitForSeconds(1);
         tween = overlay.DOFade(0, 1);
-        container.particles.Pause(); 
+        container.particles.Pause();
+        container.particles.gameObject.SetActive(false);
+
         yield return tween.WaitForCompletion();
 
 

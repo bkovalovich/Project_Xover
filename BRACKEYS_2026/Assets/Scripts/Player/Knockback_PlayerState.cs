@@ -26,8 +26,7 @@ public class Knockback_PlayerState : PlayerState {
         Debug.Log("start"); 
         float current = 0;
         Vector2 knockbackDirection = ((Vector2)transform.position - player.pointOfLastCollision).normalized;
-
-        player.rb.AddForce(player.currentMoveInput.normalized * strength, ForceMode2D.Force);
+        player.rb.AddForce(knockbackDirection * strength, ForceMode2D.Impulse);
         while(current < length) {
             current += Time.deltaTime; 
             yield return new WaitForSeconds(Time.deltaTime);

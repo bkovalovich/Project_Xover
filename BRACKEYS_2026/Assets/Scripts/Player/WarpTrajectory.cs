@@ -12,10 +12,14 @@ public class WarpTrajectory : MonoBehaviour {
     }
 
     public void ToggleWarp(bool val) {
+        ps.gameObject.SetActive(val);
+
         if (val == false) {
             transform.localPosition = Vector3.zero;
+            ps?.Pause(); 
+        } else {
+            ps.Play(); 
         }
-        ps.gameObject.SetActive(val);
         sr.enabled = val;
     }
     public void Burst(Vector2 pos) {
