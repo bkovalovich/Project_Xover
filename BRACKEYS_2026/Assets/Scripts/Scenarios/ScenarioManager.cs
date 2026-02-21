@@ -16,7 +16,7 @@ public abstract class ScenarioManager : MonoBehaviour
     //protected int ID;
     
     public Event WinConCompleted = new Event();
-    [SerializeField] protected bool currentGame;
+    [SerializeField] protected bool currentGame = false;
     [HideInInspector] public List<GameObject> otherScenarios;
     //TIMER
     [SerializeField] bool usesTimer;

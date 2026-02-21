@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour {
         newScenario.GetComponent<ScenarioManager>().SetupGame();
         if (currentScenario == sceneToLoad)
             SpawnPlayerInScenario(newScenario);
+        else
+            currentScenario.GetOtherScenarios();
         //yield return new WaitForSeconds(1);
         tween = overlay.DOFade(0, 1);
         container.particles.Pause(); 
