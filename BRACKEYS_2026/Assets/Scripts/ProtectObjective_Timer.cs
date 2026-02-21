@@ -11,6 +11,7 @@ public class Timer : MonoBehaviour
     public void Awake()
     {
         parent = GetComponent<ProtectObjestive_ScenarioManager>();
+        fill = parent.scenarioCanvas.transform.Find("Timer").GetChild(0).GetComponent<Image>();
         maxTime = parent.GetDefendTime();
         time = maxTime;
     }
