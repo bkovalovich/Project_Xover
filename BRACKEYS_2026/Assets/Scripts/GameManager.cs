@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
+using DG.Tweening; 
 
 public class GameManager : MonoBehaviour {
     public static GameManager instance { get; private set; }
@@ -52,12 +54,22 @@ public class GameManager : MonoBehaviour {
         yield return new WaitForSeconds(1f);
 
         ScenarioManager completed = currentScenario; //finish previous scenario
-        Transform container = completed.transform.parent; 
-        completed.FinishScenario();
+        ScenarioContainer container = completed.transform.parent.GetComponent<ScenarioContainer>();
 
-        GameObject newScenario = Instantiate(PickNextScenario(), container); //spawn new scenario
+        Image overlay = container.overlay; //start overlay transition
+        Tween tween = overlay.DOFade(1, 1);
+        container.particles.Play();
+        yield return tween.WaitForCompletion();
+        completed.FinishScenario(); 
+        GameObject newScenario = Instantiate(PickNextScenario(), container.transform); //spawn new scenario
         newScenario.GetComponent<ScenarioManager>().SetupGame(); 
         SpawnPlayerInScenario(newScenario);
+        yield return new WaitForSeconds(1);
+        tween = overlay.DOFade(0, 1);
+        container.particles.Pause(); 
+        yield return tween.WaitForCompletion();
+
+
     }
 
 }
