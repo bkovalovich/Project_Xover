@@ -22,11 +22,13 @@ public class ScoreAPoint_ScenarioManager : ScenarioManager
     protected override void OnWinCon()
     {
         base.OnWinCon();
-        Debug.Log("You Scored a Point");
+        string id = GetComponentInParent<ScenarioContainer>().ID;
+        Debug.Log("You Scored a Point" + " in ID: " + id);
     }
 
     protected override void OnLoseCon() {
         base.OnLoseCon();
-        Debug.Log("Enemy Scored a Point");
+        string id = GetComponentInParent<ScenarioContainer>().ID;
+        Debug.Log("Enemy Scored a Point in ID: " + id);
     }
 }

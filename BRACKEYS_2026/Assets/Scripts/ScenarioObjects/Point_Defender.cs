@@ -8,11 +8,31 @@ public class PaddleAI : MonoBehaviour
     public float thinkingTime;
     public Transform ball;
     private bool waiting = false;
+    private float prevBallX;
+    private bool ballIsComing, lastFrameBallIsComing;
+
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
     }
+
+    private void Update()
+    {
+        CheckIfBallIsComing();
+        if (ballIsComing && !lastFrameBallIsComing)
+        {
+            StartCoroutine(Wait(thinkingTime));
+        }
+
+    }
+
+    private void LateUpdate()
+    {
+        prevBallX = ball.position.x;
+        lastFrameBallIsComing = ballIsComing;
+    }
+
     private void FixedUpdate()
     {
         if (!waiting)
@@ -21,16 +41,13 @@ public class PaddleAI : MonoBehaviour
         }   
     }
 
+    // when ball is traveling towards paddle (pos X) move towards ball Y position
+    // how to make AI imperfect?
+    // increase ball speed over time
+    // make AI intentionally mess up via randomness or momentum
     private void Movement()
     {
-        if (Random.Range(0f, 2f) > 0.1f)
-        {
-            transform.position = new Vector2(transform.position.x, Mathf.Lerp(transform.position.y, ball.position.y, moveSpeed * Time.deltaTime));
-        }
-        else
-        {
-            StartCoroutine(Wait(thinkingTime));
-        }
+        transform.position = new Vector2(transform.position.x, Mathf.Lerp(transform.position.y, ball.position.y, moveSpeed * Time.deltaTime));
     }
 
     IEnumerator Wait(float duration)
@@ -38,5 +55,17 @@ public class PaddleAI : MonoBehaviour
         waiting = true;
         yield return new WaitForSeconds(duration);
         waiting = false;
+    }
+
+    private void CheckIfBallIsComing()
+    {
+        if (prevBallX < ball.position.x)
+        {
+            ballIsComing = true;
+        }
+        else
+        {
+            ballIsComing = false;
+        }
     }
 }

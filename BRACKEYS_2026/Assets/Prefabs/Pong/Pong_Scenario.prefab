@@ -344,6 +344,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 476148110848102945, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2516832323804163453, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 3747554546933336969, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
       propertyPath: m_Name
       value: Pong_Scenario
@@ -351,6 +359,14 @@ PrefabInstance:
     - target: {fileID: 4065689620622010535, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4864253786543084714, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5124550565574871345, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5467460431865203861, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
       propertyPath: m_Layer

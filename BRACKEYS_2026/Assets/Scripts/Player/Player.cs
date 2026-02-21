@@ -145,7 +145,7 @@ public class Player : MonoBehaviour
     }
     private void Animate() {
         Vector2 input = (currentMouseWorldInput - (Vector2)transform.position).normalized;
-        Debug.Log(input);
+        // Debug.Log(input);
         sr.flipX = input.x < 0 ? true : false;
         animator.SetFloat("X", input.x);
         animator.SetFloat("Y", input.y);
