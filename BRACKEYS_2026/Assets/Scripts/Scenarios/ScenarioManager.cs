@@ -34,6 +34,7 @@ public abstract class ScenarioManager : MonoBehaviour
         scenarioCanvas = transform.parent.GetComponentInChildren<Canvas>();
         objectiveText = gameObject.transform.parent.GetComponentInChildren<TMP_Text>();
         objectiveText.color = textColor;
+        objectiveText.text = objective;
         timer = scenarioCanvas.GetComponentInChildren<Timer>();
         if (usesTimer)
             timer?.StartTimer(maxTime, this);
