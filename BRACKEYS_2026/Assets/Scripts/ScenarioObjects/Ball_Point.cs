@@ -1,9 +1,10 @@
-using System;
+﻿using System;
 using UnityEngine;
 using System.Collections;
 
 public class Ball : ScenarioObject, IScenarioListener
 {
+    private AudioSource hitWall; 
     [SerializeField] float startingSpeed = 6f;
     [SerializeField] float reboundSpeedMultiplier = 1.1f;
     [SerializeField] float maxSpeed = 10f;
@@ -26,6 +27,7 @@ public class Ball : ScenarioObject, IScenarioListener
     {
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
+        hitWall = GetComponent<AudioSource>(); 
 
         startingPos = rb.position;
         LaunchBall();
@@ -33,7 +35,7 @@ public class Ball : ScenarioObject, IScenarioListener
 
     private void FixedUpdate()
     {
-        // Only clamp speed � DO NOT change direction
+        // Only clamp speed — DO NOT change direction
         if (rb.linearVelocity.magnitude > maxSpeed)
             rb.linearVelocity = rb.linearVelocity.normalized * maxSpeed;
 
@@ -49,6 +51,7 @@ public class Ball : ScenarioObject, IScenarioListener
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        hitWall.Play(); 
         switch (collision.gameObject.name)
         {
             case "Boundary Left":

@@ -169,6 +169,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19cf774e515551d44b1850b65fc22fc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ScrollingEnemy
+  oneShotDeathSFX: {fileID: 8400795134258328479, guid: ba8372f2277be2b47a900b6f39a40f1d, type: 3}
   direction: 0
   scenarioManager: {fileID: 0}
   health: 0

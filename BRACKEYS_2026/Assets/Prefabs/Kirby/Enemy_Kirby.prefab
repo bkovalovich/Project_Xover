@@ -544,6 +544,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 254fa51daaf4f0946bbbc58c3e78ea4d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KirbyGroundEnemy
+  oneShotDeathSFX: {fileID: 4746281306666005359, guid: ec29e8ec8708ef745bf1d0cc236f0206, type: 3}
   direction: 0
   scenarioManager: {fileID: 0}
   health: 0

@@ -106,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24414cbda02bf2741b832a23c66fd14e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy_Temp
+  oneShotDeathSFX: {fileID: 2970872117080129636, guid: b8dd996472eedf04d81c9ef4b20738ff, type: 3}
   direction: 0
   scenarioManager: {fileID: 0}
   health: 0
