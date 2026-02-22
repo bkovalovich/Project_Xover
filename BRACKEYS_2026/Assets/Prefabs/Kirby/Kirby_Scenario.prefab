@@ -3598,6 +3598,7 @@ MonoBehaviour:
   backgroundSprite: {fileID: 329782250133819329}
   objective: Defeat All Enemies
   textColor: {r: 0, g: 0, b: 0, a: 1}
+  currentGame: 0
   otherScenarios: []
   usesTimer: 0
   maxTime: 0
