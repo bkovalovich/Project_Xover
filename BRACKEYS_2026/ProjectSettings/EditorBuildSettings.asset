@@ -9,8 +9,8 @@ EditorBuildSettings:
     path: Assets/Scenes/Title_Screen.unity
     guid: 42c64e4c6df6a3643862e5cbc0331777
   - enabled: 1
-    path: Assets/Scenes/Bray_Scene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
+    path: Assets/Scenes/Noah_Scene.unity
+    guid: deee00248060d594b8a0b5b62c2d5df4
   - enabled: 1
     path: Assets/Scenes/GameOver_Scene.unity
     guid: fc5fe4bb72aed194390ea6e5a7f9daa0

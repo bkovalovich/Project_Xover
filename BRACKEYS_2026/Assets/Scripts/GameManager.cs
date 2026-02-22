@@ -27,9 +27,10 @@ public class GameManager : MonoBehaviour {
     }
     [SerializeField] GameObject[] scenarioList;
     [SerializeField] GameObject[] spawnPoints;
-    [SerializeField] MainCanvas mainCanvas; 
+    [SerializeField] MainCanvas mainCanvas;
 
     private void Awake() {
+        StartCoroutine(LoadLag());
        instance = this;
         score = 0;
         Score = score;
@@ -43,6 +44,13 @@ public class GameManager : MonoBehaviour {
         }
         SpawnPlayerInScenario(startingScenario);
         
+    }
+
+    private IEnumerator LoadLag()
+    {
+        Time.timeScale = 0f;
+        yield return new WaitForSecondsRealtime(3f);
+        Time.timeScale = 1f;
     }
     public void PlayerTakeDamage() {
         health--;

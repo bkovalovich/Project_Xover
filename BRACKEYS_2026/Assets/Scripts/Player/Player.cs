@@ -40,26 +40,30 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 currentMoveInput, currentMouseInput, currentMouseWorldInput;
 
     //SOUND
-    [SerializeField] public AudioSource swordSlash, teleportSFX, deadSFX; 
+    [SerializeField] public AudioSource swordSlash, teleportSFX, deadSFX;
+
+    [HideInInspector] public bool isDead;
 
     private void Awake() {
         moveState = GetComponent<Move_PlayerState>(); 
         dashState = GetComponent<Dash_PlayerState>();
         warpState = GetComponent<Warp_PlayerState>();
         knockbackState = GetComponent<Knockback_PlayerState>();
-        stateMachine.Initialize(moveState);
+
 
         rb = GetComponent<Rigidbody2D>();
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>(); 
         attackScript = GetComponentInChildren<PlayerAttack>();
         attackScript.Attack(false);
-        playerActions = new PlayerInputActions();
-       
+
     }
 
     private void OnEnable() {
 
+        isDead = false;
+        playerActions = new PlayerInputActions();
+        stateMachine.Initialize(moveState);
         playerActions.Enable();
 
         move = playerActions.Player.Move;
@@ -87,16 +91,34 @@ public class Player : MonoBehaviour
     }
 
     private void OnDisable() {
-        move.performed -= OnMove;
-        move.canceled -= OnCancelMove;
-        attack.performed -= OnAttack;
-        look.performed -= OnLook;
-        dash.performed -= OnDash;
-        dash.canceled -= OnDashCancel;
-        warp.performed -= OnWarp;
-        warp.canceled -= OnWarpCancel;
+        if (playerActions == null) return;
 
-        playerActions.Disable();
+        if (move != null)
+        {
+            move.performed -= OnMove;
+            move.canceled -= OnCancelMove;
+        }
+
+        if (attack != null)
+            attack.performed -= OnAttack;
+
+        if (look != null)
+            look.performed -= OnLook;
+
+        if (dash != null)
+        {
+            dash.performed -= OnDash;
+            dash.canceled -= OnDashCancel;
+        }
+
+        if (warp != null)
+        {
+            warp.performed -= OnWarp;
+            warp.canceled -= OnWarpCancel;
+        }
+
+        playerActions?.Disable();
+        playerActions.Dispose();
     }
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.layer == 7 && stateMachine.IsInState(knockbackState) == false && !invulnerable) {
@@ -142,11 +164,15 @@ public class Player : MonoBehaviour
         rotationParent.rotation = Quaternion.Euler(0f, 0f, angle + 90);
     }
     private void Update() {
+        if (isDead) return; 
+
         RotateToMouse();
         Animate(); 
         stateMachine.CurrentState.FrameUpdate();
     }
     private void FixedUpdate() {
+        if (isDead) return;
+
         stateMachine.CurrentState.PhysicsUpdate();
     }
     private void Animate() {
@@ -185,6 +211,7 @@ public class Player : MonoBehaviour
     public IEnumerator DieCoroutine()
     {
         Debug.Log("I died");
+        isDead = true;
         deadSFX.Play();
         // Activate death particles
         // Play death animation
@@ -193,7 +220,6 @@ public class Player : MonoBehaviour
         sr.enabled = false;
         rb.linearVelocity = Vector2.zero;
         gameObject.GetComponent<Collider2D>().enabled = false;
-        OnDisable();
         yield return new WaitForSeconds(2f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
