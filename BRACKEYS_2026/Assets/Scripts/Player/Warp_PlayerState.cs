@@ -84,6 +84,8 @@ public class Warp_PlayerState : PlayerState {
 
             if (targetScript != GameManager.instance.CurrentScenario)
             {
+                player.teleportSFX?.PlayOneShot(player.teleportSFX.clip);
+
                 GameManager.instance.SpawnPlayerInScenario(targetScript.gameObject);
                 StartCoroutine(player.Invulnerability(0.7f));
                 yield return new WaitForFixedUpdate();

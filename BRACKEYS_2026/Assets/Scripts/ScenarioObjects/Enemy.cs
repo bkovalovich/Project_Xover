@@ -15,14 +15,17 @@ public abstract class Enemy : ScenarioObject {
 
     protected abstract void Attack();
     protected abstract void Move();
+    private AudioSource swordHit; 
 
     protected virtual void Awake() {
-        rb = GetComponent<Rigidbody2D>(); 
+        rb = GetComponent<Rigidbody2D>();
+        swordHit = GetComponent<AudioSource>();
     }
 
     protected void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "PlayerAttack") {
-            TakeDamage(); 
+            TakeDamage();
+            swordHit.Play(); 
         }
         if(collision.gameObject.tag == "DeathPlane") {
             scenarioManager.SpawnEnemy();
