@@ -172,4 +172,5 @@ MonoBehaviour:
   direction: 0
   scenarioManager: {fileID: 0}
   health: 0
+  particleBurst: {fileID: 8693871612974275450, guid: 9da4ddbaf6d083f4a9c22e21ee17da62, type: 3}
   speed: 5

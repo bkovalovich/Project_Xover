@@ -16494,6 +16494,7 @@ MonoBehaviour:
   player: {fileID: 4633610788496267029}
   scenarioList:
   - {fileID: 6732431916265524543, guid: 4a4371a193207c04caff367cd78c8ef2, type: 3}
+  - {fileID: 5698292837259311369, guid: e27f3878d7c034a43b194f871658b81c, type: 3}
   spawnPoints:
   - {fileID: 3226880783147504639}
   - {fileID: 9191868941489085549}

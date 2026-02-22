@@ -8,6 +8,7 @@ public abstract class Enemy : ScenarioObject {
     protected Rigidbody2D rb; 
     [HideInInspector] public Enemies_ScenarioManager scenarioManager; 
     [SerializeField] public int health;
+    [SerializeField] GameObject particleBurst; 
 
     public Event destroyed = new Event(); 
 
@@ -34,6 +35,7 @@ public abstract class Enemy : ScenarioObject {
     }
 
     protected virtual void OnDead() {
+        Instantiate(particleBurst, transform.position, Quaternion.identity);
         destroyed.Trigger();
         Destroy(this.gameObject);
     }

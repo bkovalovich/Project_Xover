@@ -6,6 +6,7 @@ TagManager:
   tags:
   - ScenarioAnchor
   - DeathPlane
+  - PlayerAttack
   layers:
   - Default
   - TransparentFX
