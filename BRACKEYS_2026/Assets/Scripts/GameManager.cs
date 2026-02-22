@@ -41,7 +41,13 @@ public class GameManager : MonoBehaviour {
     }
     public void PlayerTakeDamage() {
         health--;
-        mainCanvas.Health = health; 
+        mainCanvas.Health = health;
+        if (health <= 0)
+        {
+            // Player death
+            player.GetComponent<Player>().Die();
+            // stop other stuff? affect timescale?
+        }
     }
     public void SpawnPlayerInScenario(GameObject scenario) {
         player.transform.position = scenario.transform.position;

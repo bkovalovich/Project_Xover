@@ -25,6 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform rotationParent;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public SpriteRenderer sr;
+    [HideInInspector] public ParticleSystem deathParticles;
     private PlayerAttack attackScript;
 
     //INPUT
@@ -169,6 +170,19 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(t);
         invulnerable = false;
         sr.color = Color.white; 
+    }
+
+    public IEnumerator Die()
+    {
+        // Activate death particles
+        // Play death animation
+        // Disable player controls
+        deathParticles.Play();
+        sr.enabled = false;
+        rb.linearVelocity = Vector2.zero;
+        gameObject.GetComponent<Collider2D>().enabled = false;
+        OnDisable();
+        yield return new WaitForSeconds(2f);
     }
 
 }
