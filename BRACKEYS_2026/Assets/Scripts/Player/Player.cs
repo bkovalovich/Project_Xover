@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.InputSystem;
 using UnityEngine.UIElements;
 using UnityEngine.Windows;
@@ -193,7 +194,7 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<Collider2D>().enabled = false;
         OnDisable();
         yield return new WaitForSeconds(2f);
-        Time.timeScale = 0f; // Freeze the game
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 
 }
