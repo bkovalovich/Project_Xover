@@ -34,12 +34,6 @@ public class Ball : ScenarioObject
 
         switch (collision.gameObject.name)
         {
-            case "Boundary Top":
-                rb.linearVelocity = Vector2.Reflect(rb.linearVelocity, Vector2.down) * reboundSpeedMultiplier;
-                break;
-            case "Boundary Bottom": 
-                rb.linearVelocity = Vector2.Reflect(rb.linearVelocity, Vector2.up) * reboundSpeedMultiplier;
-                break;
             case "Boundary Left":
                 transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(false);
                 StartCoroutine(Reset());
@@ -49,7 +43,11 @@ public class Ball : ScenarioObject
                 StartCoroutine(Reset());
                 break;
         }
-        StartCoroutine(WaitForCollision());
+
+        if (collision.gameObject.CompareTag("DeathPlane"))
+        {
+            StartCoroutine(Reset());
+        }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -70,12 +68,5 @@ public class Ball : ScenarioObject
         col.enabled = true;
         rb.linearVelocity = new Vector2(UnityEngine.Random.Range(0f, 1f) * startingSpeed, UnityEngine.Random.Range(-1f, 1f)) * startingSpeed;
 
-    }
-
-    IEnumerator WaitForCollision()
-    {
-        col.enabled = false;
-        yield return new WaitForSeconds(0.1f);
-        col.enabled = true;
     }
 }
