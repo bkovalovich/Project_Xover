@@ -25,7 +25,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform rotationParent;
     [HideInInspector] public Rigidbody2D rb;
     [HideInInspector] public SpriteRenderer sr;
-    [HideInInspector] public ParticleSystem deathParticles;
+    [SerializeField] private ParticleSystem deathParticles;
     private PlayerAttack attackScript;
 
     //INPUT
@@ -172,8 +172,14 @@ public class Player : MonoBehaviour
         sr.color = Color.white; 
     }
 
-    public IEnumerator Die()
+    public void Die()
     {
+        StartCoroutine(DieCoroutine());
+    }
+
+    public IEnumerator DieCoroutine()
+    {
+        Debug.Log("I died");
         // Activate death particles
         // Play death animation
         // Disable player controls
@@ -183,6 +189,7 @@ public class Player : MonoBehaviour
         gameObject.GetComponent<Collider2D>().enabled = false;
         OnDisable();
         yield return new WaitForSeconds(2f);
+        Time.timeScale = 0f; // Freeze the game
     }
 
 }

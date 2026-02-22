@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour {
         mainCanvas.Health = health;
         if (health <= 0)
         {
+            Debug.Log("GameManager says I died");
             // Player death
             player.GetComponent<Player>().Die();
             // stop other stuff? affect timescale?
