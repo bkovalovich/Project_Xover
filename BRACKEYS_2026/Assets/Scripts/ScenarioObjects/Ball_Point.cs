@@ -36,11 +36,11 @@ public class Ball : ScenarioObject
         {
             case "Boundary Left":
                 transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(false);
-                StartCoroutine(Reset());
+                Destroy(this.gameObject);
                 break;
             case "Boundary Right":
                 transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(true);
-                StartCoroutine(Reset());
+                Destroy(this.gameObject);
                 break;
         }
 
