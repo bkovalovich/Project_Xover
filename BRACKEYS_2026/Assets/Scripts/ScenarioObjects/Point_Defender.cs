@@ -24,7 +24,8 @@ public class PaddleAI : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movement();
+        if (ball != null)
+            Movement();
     }
 
     // when ball is traveling towards paddle (pos X) move towards ball Y position

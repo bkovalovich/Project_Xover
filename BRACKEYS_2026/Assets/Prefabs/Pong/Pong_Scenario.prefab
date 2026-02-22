@@ -154,7 +154,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
+  m_AngularDamping: 0
   m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
   m_IncludeLayers:
@@ -164,7 +164,7 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 1
-  m_SleepingMode: 1
+  m_SleepingMode: 0
   m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &4390769479933252292
@@ -180,9 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   startingSpeed: 2
-  startingPos: {x: 0, y: 0}
   reboundSpeedMultiplier: 1.5
   maxSpeed: 10
+  wallEscapeForce: 0.6
+  minWallBounceDot: 0.15
+  stuckCheckTime: 0.25
 --- !u!1 &4923567367208748579
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,7 +215,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.2, y: 0.25, z: 0}
-  m_LocalScale: {x: 0.116225, y: 1.2642, z: 0}
+  m_LocalScale: {x: 0.4, y: 1.2642, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1821447038030999013}
@@ -287,7 +289,7 @@ BoxCollider2D:
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -345,15 +347,15 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4923567367208748579}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
+  m_AngularDamping: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -361,8 +363,8 @@ Rigidbody2D:
     serializedVersion: 2
     m_Bits: 0
   m_Interpolate: 1
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_SleepingMode: 0
+  m_CollisionDetection: 1
   m_Constraints: 5
 --- !u!1001 &8846618325005074492
 PrefabInstance:
@@ -384,6 +386,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 2675567220868480994, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
+    - target: {fileID: 3629276639008600751, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
     - target: {fileID: 3722251731921236623, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
       propertyPath: m_LocalScale.x
       value: 6
@@ -408,6 +418,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4743356282949020478, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
     - target: {fileID: 4864253786543084714, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -500,6 +514,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -3
       objectReference: {fileID: 0}
+    - target: {fileID: 9144769168312740058, guid: b53b230eff080f049a9842c0f8b89c37, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 31f6d4e9d40d19847b306640e08b4438, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
