@@ -24,8 +24,9 @@ public abstract class Enemy : ScenarioObject {
 
     protected void OnTriggerEnter2D(Collider2D collision) {
         if (collision.gameObject.tag == "PlayerAttack") {
+            swordHit.Play();
             TakeDamage();
-            swordHit.Play(); 
+
         }
         if(collision.gameObject.tag == "DeathPlane") {
             scenarioManager.SpawnEnemy();
