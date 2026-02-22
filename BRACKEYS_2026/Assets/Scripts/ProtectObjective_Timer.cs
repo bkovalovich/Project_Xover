@@ -38,7 +38,8 @@ public class Timer : MonoBehaviour
         }
         current = 0;
         fill.fillAmount = 0;
-        parent.OnTimerFinish(); 
+        if(parent != null)
+            parent.OnTimerFinish(); 
     }
 }
 

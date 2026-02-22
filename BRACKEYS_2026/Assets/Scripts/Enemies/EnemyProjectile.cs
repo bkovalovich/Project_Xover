@@ -8,7 +8,7 @@ public class EnemyProjectile : MonoBehaviour
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        rb.AddForce(new Vector2(speed, speed));
+        rb.linearVelocity = transform.up * speed; 
     }
     private void Update() {
         timer += Time.deltaTime; 
@@ -18,5 +18,11 @@ public class EnemyProjectile : MonoBehaviour
     }
     protected virtual void OnTimerUp() {
         Destroy(gameObject);
+    }
+    protected void OnTriggerEnter2D(Collider2D collision) {
+        if (collision.gameObject.tag == "DeathPlane" || collision.gameObject.tag == "PlayerAttack") {
+            Destroy(this.gameObject);
+        }
+
     }
 }

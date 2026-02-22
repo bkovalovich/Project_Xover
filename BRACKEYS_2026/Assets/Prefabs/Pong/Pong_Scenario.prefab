@@ -182,9 +182,6 @@ MonoBehaviour:
   startingSpeed: 2
   reboundSpeedMultiplier: 1.5
   maxSpeed: 10
-  wallEscapeForce: 0.6
-  minWallBounceDot: 0.15
-  stuckCheckTime: 0.25
 --- !u!1 &4923567367208748579
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,7 +24,6 @@ public class DefeatAllEnemies_ScenarioManager : Enemies_ScenarioManager {
         return e; 
     }
     private void UpdateObjText() {
-        Debug.Log($"Defeat {destroyedEnemies}/{numberOfEnemies} enemies"); 
        objectiveText.text = $"Defeat {destroyedEnemies}/{numberOfEnemies} enemies";
 
     }
