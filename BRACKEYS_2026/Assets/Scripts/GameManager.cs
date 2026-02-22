@@ -19,7 +19,12 @@ public class GameManager : MonoBehaviour {
         }
     }
     private int score, health;
-
+    private int Score {
+        set { 
+            score = value;
+            mainCanvas.Score = score; 
+        }
+    }
     [SerializeField] GameObject[] scenarioList;
     [SerializeField] GameObject[] spawnPoints;
     [SerializeField] MainCanvas mainCanvas; 
@@ -27,7 +32,7 @@ public class GameManager : MonoBehaviour {
     private void Awake() {
        instance = this;
         score = 0;
-        mainCanvas.Score = score;
+        Score = score;
         health = player.GetComponent<Player>().playerInfo.health;
         mainCanvas.Health = health;
         GameObject startingScenario = null;
@@ -64,6 +69,7 @@ public class GameManager : MonoBehaviour {
         return scenarioList[Random.Range(0, scenarioList.Length)];
     }
     public IEnumerator LoadNextScenario(bool successful, ScenarioManager sceneToLoad) {
+        if (successful) Score = score + 1; 
         yield return new WaitForSeconds(1f);
 
         ScenarioManager completed = sceneToLoad; //finish previous scenario
