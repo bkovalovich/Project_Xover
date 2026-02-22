@@ -8,14 +8,10 @@ public class Timer : MonoBehaviour
     ScenarioManager parent;
     private float maxTime;
     private float current;
-    private Coroutine timerCoroutine; 
+    private Coroutine timerCoroutine;
 
-    //public void Awake()
-    //{
-    //    parent = GetComponent<ProtectObjestive_ScenarioManager>();
-    //    fill = parent.scenarioCanvas.transform.Find("Timer").GetChild(0).GetComponent<Image>();
-    //    maxTime = parent.GetDefendTime();
-    //    time = maxTime;
+    //private void Awake() {
+    //    fill = transform.GetComponent<Image>(); 
     //}
     public void Toggle(bool val) {
         fill.enabled = val; 

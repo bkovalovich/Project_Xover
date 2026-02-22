@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2970872117080129636, guid: b8dd996472eedf04d81c9ef4b20738ff, type: 3}
       propertyPath: m_Name
-      value: OneShotSFX
+      value: MightlurmDeadSFX
       objectReference: {fileID: 0}
     - target: {fileID: 5258867585147745224, guid: b8dd996472eedf04d81c9ef4b20738ff, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,6 +52,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8810671389919913748, guid: b8dd996472eedf04d81c9ef4b20738ff, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: f489eb12f5037004f90b4cc915cb171f, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

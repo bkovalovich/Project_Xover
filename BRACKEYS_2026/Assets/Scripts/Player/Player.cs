@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
     private Knockback_PlayerState knockbackState;
 
     private Coroutine attackCoroutine;
-    private Animator animator; 
+    private Animator animator;
 
     //COMPONENTS
     [SerializeField] Transform rotationParent;
@@ -32,11 +32,14 @@ public class Player : MonoBehaviour
     private PlayerInputActions playerActions;
     private InputAction move, dash, attack, look, warp;
 
-    public Vector2 pointOfLastCollision;
+    [HideInInspector] public Vector2 pointOfLastCollision;
     private float currentSpeed;
     [HideInInspector] public bool holdingWarp = false, isAttacking, invulnerable;
 
     [HideInInspector] public Vector2 currentMoveInput, currentMouseInput, currentMouseWorldInput;
+
+    //SOUND
+    [SerializeField] AudioSource swordSlash; 
 
     private void Awake() {
         moveState = GetComponent<Move_PlayerState>(); 
@@ -155,6 +158,7 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator Attack(float duration) {
+        swordSlash.PlayOneShot(swordSlash.clip); 
         isAttacking = false;
         attackScript.Attack(false);
         yield return null;
