@@ -1111,6 +1111,10 @@ PrefabInstance:
       propertyPath: enemyPrefab
       value: 
       objectReference: {fileID: 4547643906972263286, guid: 65b62078df06601449446696a2b6b551, type: 3}
+    - target: {fileID: 3724630627043673147, guid: 6a0259e71917ac143813070843d0cb95, type: 3}
+      propertyPath: textColor.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4811853427688437986, guid: 6a0259e71917ac143813070843d0cb95, type: 3}
       propertyPath: m_Name
       value: Pokemon_Scenario
