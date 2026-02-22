@@ -77,7 +77,7 @@ public class Ball : ScenarioObject, IScenarioListener
     {
         if (collision.gameObject.name == ("PlayerAttack")) 
         { 
-            Vector2 direction = -collision.transform.right.normalized; 
+            Vector2 direction = -collision.transform.up.normalized; 
             Vector2 newVelocity = rb.linearVelocity.magnitude * direction * reboundSpeedMultiplier; 
             rb.linearVelocity = newVelocity; 
         }

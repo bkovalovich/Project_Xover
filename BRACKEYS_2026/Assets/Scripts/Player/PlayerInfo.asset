@@ -16,7 +16,7 @@ MonoBehaviour:
   acceleration: 55
   deacceleration: 35
   dashSpeed: 750
-  attackLength: 0.5
+  attackLength: 0.2
   dashLength: 0.2
   knockbackLength: 0.07
   knockbackStrength: 10
