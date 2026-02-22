@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour {
         container.particles.gameObject.SetActive(true);
         container.particles.Play();
         yield return tween.WaitForCompletion();
-        Debug.Log("got past wait for complete");
+        //Debug.Log("got past wait for complete");
 
         completed.FinishScenario(); 
         GameObject newScenario = Instantiate(PickNextScenario(), container.transform); //spawn new scenario
@@ -115,7 +115,7 @@ public class GameManager : MonoBehaviour {
             otherScenarioManager.PlayerLeaveGame();
         }
         CurrentScenario = scenarioScript;
-        Debug.Log(id + " value on complete is " + CurrentScenario.currentGame);
+        //Debug.Log(id + " value on complete is " + CurrentScenario.currentGame);
     }
 
 }
