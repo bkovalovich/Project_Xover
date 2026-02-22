@@ -40,7 +40,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 currentMoveInput, currentMouseInput, currentMouseWorldInput;
 
     //SOUND
-    [SerializeField] public AudioSource swordSlash, teleportSFX; 
+    [SerializeField] public AudioSource swordSlash, teleportSFX, deadSFX; 
 
     private void Awake() {
         moveState = GetComponent<Move_PlayerState>(); 
@@ -185,6 +185,7 @@ public class Player : MonoBehaviour
     public IEnumerator DieCoroutine()
     {
         Debug.Log("I died");
+        deadSFX.Play();
         // Activate death particles
         // Play death animation
         // Disable player controls
