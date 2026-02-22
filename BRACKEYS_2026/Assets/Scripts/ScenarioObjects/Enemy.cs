@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections;
 
 public abstract class Enemy : ScenarioObject {
+    [SerializeField] GameObject oneShotDeathSFX; 
     [HideInInspector] public int direction;
 
     protected Rigidbody2D rb; 
@@ -35,7 +36,8 @@ public abstract class Enemy : ScenarioObject {
     }
 
     protected virtual void OnDead() {
-        Instantiate(particleBurst, transform.position, Quaternion.identity);
+        if(oneShotDeathSFX) Instantiate(oneShotDeathSFX);
+        if(particleBurst) Instantiate(particleBurst, transform.position, Quaternion.identity);
         destroyed.Trigger();
         Destroy(this.gameObject);
     }

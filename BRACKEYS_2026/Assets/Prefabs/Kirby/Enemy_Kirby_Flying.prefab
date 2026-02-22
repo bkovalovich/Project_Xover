@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ac3b8a49b5fb304ab460bfb6b88a14c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KirbyFlingEnemy
+  oneShotDeathSFX: {fileID: 4746281306666005359, guid: ec29e8ec8708ef745bf1d0cc236f0206, type: 3}
   direction: 0
   scenarioManager: {fileID: 0}
   health: 0
