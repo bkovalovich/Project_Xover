@@ -39,7 +39,7 @@ public class Player : MonoBehaviour
     [HideInInspector] public Vector2 currentMoveInput, currentMouseInput, currentMouseWorldInput;
 
     //SOUND
-    [SerializeField] AudioSource swordSlash; 
+    [SerializeField] public AudioSource swordSlash, teleportSFX; 
 
     private void Awake() {
         moveState = GetComponent<Move_PlayerState>(); 
@@ -158,7 +158,7 @@ public class Player : MonoBehaviour
     }
 
     IEnumerator Attack(float duration) {
-        swordSlash.PlayOneShot(swordSlash.clip); 
+        swordSlash?.PlayOneShot(swordSlash.clip); 
         isAttacking = false;
         attackScript.Attack(false);
         yield return null;
