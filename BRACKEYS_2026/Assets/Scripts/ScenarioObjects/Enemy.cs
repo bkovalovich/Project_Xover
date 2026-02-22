@@ -8,7 +8,7 @@ public abstract class Enemy : ScenarioObject {
 
     protected Rigidbody2D rb; 
     [HideInInspector] public Enemies_ScenarioManager scenarioManager; 
-    [SerializeField] public int health;
+    [SerializeField] public int health = 3;
     [SerializeField] GameObject particleBurst; 
 
     public Event destroyed = new Event(); 
