@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using System.Collections;
 
 public class Ball : ScenarioObject
 {
@@ -8,10 +9,12 @@ public class Ball : ScenarioObject
     [SerializeField] float reboundSpeedMultiplier;
     [SerializeField] float maxSpeed = 10;
     private Rigidbody2D rb;
+    private Collider2D col;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         startingPos = rb.position;
         rb.linearVelocity = new Vector2(UnityEngine.Random.Range(0f, 1f) * startingSpeed, UnityEngine.Random.Range(-1f, 1f)) * startingSpeed;
     }
@@ -32,25 +35,47 @@ public class Ball : ScenarioObject
         switch (collision.gameObject.name)
         {
             case "Boundary Top":
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x * reboundSpeedMultiplier, -rb.linearVelocity.y * reboundSpeedMultiplier);
+                rb.linearVelocity = Vector2.Reflect(rb.linearVelocity, Vector2.down) * reboundSpeedMultiplier;
                 break;
             case "Boundary Bottom": 
-                rb.linearVelocity = new Vector2(rb.linearVelocity.x * reboundSpeedMultiplier, -rb.linearVelocity.y * reboundSpeedMultiplier);
+                rb.linearVelocity = Vector2.Reflect(rb.linearVelocity, Vector2.up) * reboundSpeedMultiplier;
                 break;
             case "Boundary Left":
                 transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(false);
-                Reset();
+                StartCoroutine(Reset());
                 break;
             case "Boundary Right":
                 transform.parent.GetComponent<ScoreAPoint_ScenarioManager>().CollisionDetected(true);
-                Reset();
+                StartCoroutine(Reset());
                 break;
+        }
+        StartCoroutine(WaitForCollision());
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.name == ("PlayerAttack"))
+        {
+            Vector2 direction = -collision.transform.right.normalized;
+            Vector2 newVelocity = rb.linearVelocity.magnitude * direction * reboundSpeedMultiplier;
+            rb.linearVelocity = newVelocity;
         }
     }
 
-    public void Reset()
+    IEnumerator Reset()
     {
         rb.position = startingPos;
+        rb.linearVelocity = Vector2.zero;
+        col.enabled = false;
+        yield return new WaitForSeconds(2f);
+        col.enabled = true;
         rb.linearVelocity = new Vector2(UnityEngine.Random.Range(0f, 1f) * startingSpeed, UnityEngine.Random.Range(-1f, 1f)) * startingSpeed;
+
+    }
+
+    IEnumerator WaitForCollision()
+    {
+        col.enabled = false;
+        yield return new WaitForSeconds(0.1f);
+        col.enabled = true;
     }
 }

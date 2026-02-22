@@ -15,6 +15,7 @@ public class PaddleAI : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        lastFrameBallIsComing = true;
     }
 
     private void Update()
@@ -23,6 +24,7 @@ public class PaddleAI : MonoBehaviour
         if (ballIsComing && !lastFrameBallIsComing)
         {
             StartCoroutine(Wait(thinkingTime));
+            thinkingTime = thinkingTime * 1.1f;
         }
 
     }
@@ -38,7 +40,11 @@ public class PaddleAI : MonoBehaviour
         if (!waiting)
         {
             Movement();
-        }   
+        }
+        else
+        {
+            rb.linearVelocity = Vector2.zero;
+        }
     }
 
     // when ball is traveling towards paddle (pos X) move towards ball Y position
@@ -47,7 +53,10 @@ public class PaddleAI : MonoBehaviour
     // make AI intentionally mess up via randomness or momentum
     private void Movement()
     {
-        transform.position = new Vector2(transform.position.x, Mathf.Lerp(transform.position.y, ball.position.y, moveSpeed * Time.deltaTime));
+        float distanceY = ball.position.y - rb.position.y;
+        // Proportional control: speed scales with distance, but clamp to max speed
+        float velocityY = Mathf.Clamp(distanceY * moveSpeed, -moveSpeed, moveSpeed);
+        rb.linearVelocity = new Vector2(0, velocityY);
     }
 
     IEnumerator Wait(float duration)
